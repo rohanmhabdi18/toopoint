@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>    <link rel='icon' type='image/gif' href='../images/Logo.gif'>
+
+    <link rel='icon' type='image/gif' href='../images/Logo.gif'>
+
+    <link rel='icon' type='image/gif' href='../images/Logo.gif'>
+     <link rel='icon' type='image/gif' href='../images/Logo.gif'>
+     <link rel='icon' type='image/gif' href='../images/Logo.gif'>
+     <link rel='icon' type='image/gif' href='../images/Logo.gif'>
+     <link rel='icon' type='image/gif' href='../images/Logo.gif'>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Towards Point - Travel Haven - Group Booking</title>
+    <style>
+        /* =========================================
+           FOOTER CSS
+           ========================================= */
+        .site-footer {
+            background: #1e293b; /* Deep slate blue */
+            color: #f8fafc;
+            padding: 60px 20px 20px;
+            margin-top: 60px;
+            border-top: 4px solid #3498db; /* Blue accent line */
+            font-family: 'Segoe UI', sans-serif;
+            position: relative;
+            z-index: 10;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: space-between;
+        }
+
+        .footer-col {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-col h3 {
+            font-size: 1.6rem;
+            color: #ffffff;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-col h4 {
+            font-size: 1.2rem;
+            color: #ffffff;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 3px;
+            background: #3498db;
+            border-radius: 2px;
+        }
+
+        .footer-col p {
+            color: #cbd5e1;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+
+        .footer-col.contact p i {
+            color: #3498db;
+            width: 25px;
+            font-size: 1.1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .social-links a:hover {
+            background: #3498db;
+            transform: translateY(-4px);
+        }
+
+        .footer-col.links ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-col.links ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col.links ul li a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-col.links ul li a::before {
+            content: '\f105'; /* FontAwesome right arrow */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            font-size: 0.8rem;
+            color: #3498db;
+            transition: 0.3s;
+        }
+
+        .footer-col.links ul li a:hover {
+            color: #3498db;
+            padding-left: 6px;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 40px auto 0;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        .footer-bottom a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .footer-bottom a:hover {
+            color: #3498db;
+        }
+        /* --- General Styling --- */
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f4f4; }
+
+        /* --- Navigation Toggle --- */
+        .travel-type-nav {
+            display: none;
+            justify-content: center;
+            margin: 40px 0;
+        }
+
+        .nav-btn {
+            padding: 12px 50px;
+            border: 2px solid #3498db;
+            background: white;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s;
+            color: #3498db;
+        }
+
+        .nav-btn:first-child { border-radius: 30px 0 0 30px; border-right: none; }
+        .nav-btn:last-child { border-radius: 0 30px 30px 0; border-left: none; }
+
+        .nav-btn.active {
+            background-color: #3498db;
+            color: white;
+            box-shadow: 0 4px 10px rgba(52, 152, 219, 0.3);
+        }
+
+        /* --- Modal Styling --- */
+        .modal-overlay {
+            display: flex;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(3px);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 550px;
+            max-height: 85vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .close-btn {
+            position: relative;
+            top: auto; right: auto;
+            font-size: 28px;
+            cursor: pointer;
+            color: #888;
+            border: none;
+            background: none;
+            padding: 0;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h2 { text-align: center; color: #2c3e50; margin-bottom: 20px; }
+
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: 600; font-size: 0.9rem; }
+        .form-group input {
+            width: 100%; padding: 10px;
+            border: 1px solid #ccc; border-radius: 6px;
+            box-sizing: border-box;
+        }
+
+        .radio-group {
+            display: flex; gap: 20px;
+            background: #f9f9f9; padding: 10px;
+            border-radius: 6px;
+        }
+
+        /* --- DYNAMIC TRAVELER CARD STYLING --- */
+        #dynamic-boarding-fields {
+            margin-top: 15px;
+            display: none;
+        }
+
+        .traveler-card {
+            background: #f8fbff;
+            border: 1px solid #dbeafe;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .traveler-card h4 {
+            margin: 0 0 10px 0;
+            color: #2980b9;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid #e1e1e1;
+            padding-bottom: 5px;
+        }
+
+        .traveler-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .traveler-row input {
+            flex: 1;
+        }
+
+        .submit-btn {
+            width: 100%; padding: 12px;
+            background-color: #27ae60; color: white;
+            border: none; border-radius: 6px;
+            font-size: 16px; font-weight: bold;
+            cursor: pointer; margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="travel-type-nav">
+        <button class="nav-btn active" id="btn-single" onclick="selectType('single')">Single</button>
+        <button class="nav-btn" id="btn-group" onclick="selectType('group')">Group</button>
+    </div>
+
+    <div class="modal-overlay" id="group-modal">
+        <div class="modal-content">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h2 style="margin: 0;">Group Booking</h2>
+                <div>
+                    <a href="index.html" style="display: inline-block; margin-right: 10px; padding: 8px 15px; background: #3498db; color: white; border-radius: 6px; text-decoration: none; font-weight: 500; cursor: pointer;">← Back to Home</a>
+                    <span class="close-btn" onclick="closeModal()" style="cursor: pointer;">&times;</span>
+                </div>
+            </div>
+            
+            <form id="groupForm" onsubmit="handleFormSubmit(event)">
+                
+                <div class="form-group">
+                    <label>Number of People:</label>
+                    <input type="number" id="num-people" min="2" placeholder="e.g. 5" required oninput="checkLogic()">
+                </div>
+
+                <div class="form-group">
+                    <label>Destination (Where do you want to go?):</label>
+                    <select id="destination" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box;">
+                        <option value="">Select a destination...</option>
+                        <optgroup label="India">
+                            <option value="delhi">Delhi</option>
+                            <option value="mumbai">Mumbai</option>
+                            <option value="bangalore">Bangalore</option>
+                            <option value="hyderabad">Hyderabad</option>
+                            <option value="pune">Pune</option>
+                            <option value="goa">Goa</option>
+                            <option value="jaipur">Jaipur</option>
+                            <option value="agra">Agra</option>
+                            <option value="kolkata">Kolkata</option>
+                            <option value="chennai">Chennai</option>
+                            <option value="kochi">Kochi</option>
+                            <option value="lucknow">Lucknow</option>
+                            <option value="chandigarh">Chandigarh</option>
+                            <option value="bhopal">Bhopal</option>
+                            <option value="indore">Indore</option>
+                        </optgroup>
+                        <optgroup label="International">
+                            <option value="paris">Paris</option>
+                            <option value="london">London</option>
+                            <option value="tokyo">Tokyo</option>
+                            <option value="bangkok">Bangkok</option>
+                            <option value="dubai">Dubai</option>
+                            <option value="singapore">Singapore</option>
+                            <option value="new-york">New York</option>
+                            <option value="bali">Bali</option>
+                        </optgroup>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Meeting Point (Where should we meet?):</label>
+                    <select id="meeting-point" required onchange="handleMeetingPointChange()" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box;">
+                        <option value="">Select meeting point...</option>
+                        <option value="auto-calculate">🔄 Auto-Calculate from Boarding Points</option>
+                        <optgroup label="Major Indian Cities">
+                            <option value="delhi">Delhi</option>
+                            <option value="mumbai">Mumbai</option>
+                            <option value="bangalore">Bangalore</option>
+                            <option value="hyderabad">Hyderabad</option>
+                            <option value="pune">Pune</option>
+                            <option value="goa">Goa</option>
+                            <option value="jaipur">Jaipur</option>
+                            <option value="agra">Agra</option>
+                            <option value="kolkata">Kolkata</option>
+                            <option value="chennai">Chennai</option>
+                            <option value="kochi">Kochi</option>
+                            <option value="lucknow">Lucknow</option>
+                            <option value="chandigarh">Chandigarh</option>
+                            <option value="bhopal">Bhopal</option>
+                            <option value="indore">Indore</option>
+                        </optgroup>
+                    </select>
+                    <small id="auto-calc-message" style="color: #3498db; margin-top: 5px; display: none;"></small>
+                </div>
+
+                <div class="form-group">
+                    <label>Boarding Points:</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="boarding" value="same" checked onchange="checkLogic()"> 
+                            Same for all
+                        </label>
+                        <label>
+                            <input type="radio" name="boarding" value="different" onchange="checkLogic()"> 
+                            Different
+                        </label>
+                    </div>
+                </div>
+
+                <div id="dynamic-boarding-fields">
+                    </div>
+
+                <button type="submit" class="submit-btn">Next Step &rarr;</button>
+            </form>
+        </div>
+    </div>
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-col branding">
+                <h3><i class="fas fa-compass"></i> Towards Point</h3>
+                <p>Your ultimate travel partner. Find the best deals on flights, trains, hotels, and holiday packages. Explore the world with us securely and effortlessly.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#flights">Book Flights</a></li>
+                    <li><a href="index.html#trains">Book Trains</a></li>
+                    <li><a href="index.html#hotels">Find Hotels</a></li>
+                    <li><a href="index.html#packages">Holiday Packages</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col contact">
+                <h4>Contact Us</h4>
+                <p><i class="fas fa-map-marker-alt"></i> Towards Point HQ, Bhayandar</p>
+                <p><i class="fas fa-phone-alt"></i> +91 98765 43210</p>
+                <p><i class="fas fa-envelope"></i> support@towardspoint.com</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Towards Point. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Toggle Logic
+        function selectType(type) {
+            document.getElementById('btn-single').classList.remove('active');
+            document.getElementById('btn-group').classList.remove('active');
+            
+            if (type === 'single') {
+                document.getElementById('btn-single').classList.add('active');
+            } else {
+                document.getElementById('btn-group').classList.add('active');
+                openModal();
+            }
+        }
+
+        function openModal() { document.getElementById('group-modal').style.display = 'flex'; }
+        function closeModal() { 
+            window.location.href = 'group-travel-coordination.html';
+        }
+
+        // --- CORE LOGIC: Generate Traveler Cards ---
+        function checkLogic() {
+            const numPeople = document.getElementById('num-people').value;
+            const boardingType = document.querySelector('input[name="boarding"]:checked').value;
+            const container = document.getElementById('dynamic-boarding-fields');
+            
+            container.innerHTML = ''; // Clear previous
+            
+            // Logic: Show details if "Different" is selected AND number > 0
+            if (boardingType === 'different' && numPeople > 0) {
+                container.style.display = 'block';
+                
+                // Header
+                const title = document.createElement('p');
+                title.innerText = `Enter Details for ${numPeople} Travelers:`;
+                title.style.fontWeight = 'bold';
+                title.style.color = '#333';
+                container.appendChild(title);
+
+                // Loop to create cards
+                for (let i = 1; i <= numPeople; i++) {
+                    const card = document.createElement('div');
+                    card.className = 'traveler-card';
+                    
+                    card.innerHTML = `
+                        <h4>Traveler ${i}</h4>
+                        <div class="traveler-row">
+                            <input type="text" name="name_${i}" placeholder="Full Name" required>
+                            <input type="tel" name="phone_${i}" placeholder="Phone No." required>
+                        </div>
+                        <input type="text" name="location_${i}" placeholder="Boarding Location (City/Area)" required style="width:100%" oninput="handleMeetingPointChange()">
+                    `;
+                    container.appendChild(card);
+                }
+                
+                // Trigger meeting point update if auto-calculate is selected
+                setTimeout(() => {
+                    if (document.getElementById('meeting-point').value === 'auto-calculate') {
+                        handleMeetingPointChange();
+                    }
+                }, 100);
+            } else {
+                // Hide container if conditions aren't met
+                container.style.display = 'none';
+            }
+        }
+
+        // --- AUTO-CALCULATE MEETING POINT ---
+        function handleMeetingPointChange() {
+            const meetingPointSelect = document.getElementById('meeting-point');
+            const autoCalcMessage = document.getElementById('auto-calc-message');
+            const boardingType = document.querySelector('input[name="boarding"]:checked').value;
+            
+            if (meetingPointSelect.value === 'auto-calculate') {
+                if (boardingType === 'different') {
+                    // Get all boarding locations
+                    const locations = [];
+                    const boardingInputs = document.querySelectorAll('input[name^="location_"]');
+                    boardingInputs.forEach(input => {
+                        if (input.value) {
+                            locations.push(input.value.toLowerCase().trim());
+                        }
+                    });
+
+                    if (locations.length > 0) {
+                        // Calculate the best meeting point (first unique location or most central)
+                        const calculatedPoint = locations[0];
+                        const capitalizedPoint = calculatedPoint.charAt(0).toUpperCase() + calculatedPoint.slice(1);
+                        
+                        autoCalcMessage.style.display = 'block';
+                        autoCalcMessage.innerText = `✓ Meeting point auto-calculated: ${capitalizedPoint}`;
+                        
+                        // Store in a hidden field for form submission
+                        let hiddenField = document.getElementById('auto-calculated-point');
+                        if (!hiddenField) {
+                            hiddenField = document.createElement('input');
+                            hiddenField.type = 'hidden';
+                            hiddenField.id = 'auto-calculated-point';
+                            document.getElementById('groupForm').appendChild(hiddenField);
+                        }
+                        hiddenField.value = capitalizedPoint;
+                    } else {
+                        autoCalcMessage.style.display = 'block';
+                        autoCalcMessage.innerText = '⚠ Please enter boarding locations first to auto-calculate';
+                    }
+                } else {
+                    autoCalcMessage.style.display = 'block';
+                    autoCalcMessage.innerText = '⚠ Please select "Different" boarding points to auto-calculate';
+                }
+            } else {
+                autoCalcMessage.style.display = 'none';
+                // Remove the hidden field if not using auto-calculate
+                const hiddenField = document.getElementById('auto-calculated-point');
+                if (hiddenField) hiddenField.remove();
+            }
+        }
+
+        // --- SUBMIT LOGIC ---
+        function handleFormSubmit(event) {
+            event.preventDefault();
+
+            const numPeople = document.getElementById('num-people').value;
+            const destination = document.getElementById('destination').value;
+            let meetingPoint = document.getElementById('meeting-point').value;
+            const boardingType = document.querySelector('input[name="boarding"]:checked').value;
+            
+            // If auto-calculate was selected, use the calculated value
+            if (meetingPoint === 'auto-calculate') {
+                const hiddenField = document.getElementById('auto-calculated-point');
+                meetingPoint = hiddenField ? hiddenField.value : 'To be determined';
+            }
+            
+            // 1. Initialize an array to hold our travelers
+            let travelers = [];
+
+            // 2. Loop through the inputs to gather data
+            if (boardingType === 'different') {
+                for (let i = 1; i <= numPeople; i++) {
+                    // We grab the specific inputs by name
+                    const nameInput = document.querySelector(`input[name="name_${i}"]`);
+                    const phoneInput = document.querySelector(`input[name="phone_${i}"]`);
+                    const locationInput = document.querySelector(`input[name="location_${i}"]`);
+
+                    // Safe check in case inputs are missing
+                    if(nameInput && phoneInput && locationInput) {
+                        travelers.push({
+                            name: nameInput.value,
+                            phone: phoneInput.value,
+                            location: locationInput.value
+                        });
+                    }
+                }
+            } else {
+                // Handle "Same" logic (Dummy data for now as per design)
+                for (let i = 1; i <= numPeople; i++) {
+                    travelers.push({
+                        name: `Guest ${i}`,
+                        phone: "---",
+                        location: "Central Point (Same)"
+                    });
+                }
+            }
+
+            // 3. Save to LocalStorage (The Browser's Memory)
+            const bookingData = {
+                count: numPeople,
+                destination: destination,
+                meetingPoint: meetingPoint,
+                type: boardingType,
+                travelers: travelers
+            };
+            
+            localStorage.setItem('travelHavenBooking', JSON.stringify(bookingData));
+
+            // 4. Redirect
+            window.location.href = 'next-page.html'; 
+        }
+    </script>
+</body>
+</html>

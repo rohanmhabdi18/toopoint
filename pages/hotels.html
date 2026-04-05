@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Hotel - Towards Point</title>
+    <link rel="icon" type="image/gif" href="../images/Logo.gif">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <style>
+        /* =========================================
+           FOOTER CSS
+           ========================================= */
+        .site-footer {
+            background: #1e293b; /* Deep slate blue */
+            color: #f8fafc;
+            padding: 60px 20px 20px;
+            margin-top: 60px;
+            border-top: 4px solid #3498db; /* Blue accent line */
+            font-family: 'Segoe UI', sans-serif;
+            position: relative;
+            z-index: 10;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: space-between;
+        }
+
+        .footer-col {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-col h3 {
+            font-size: 1.6rem;
+            color: #ffffff;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-col h4 {
+            font-size: 1.2rem;
+            color: #ffffff;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 3px;
+            background: #3498db;
+            border-radius: 2px;
+        }
+
+        .footer-col p {
+            color: #cbd5e1;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+
+        .footer-col.contact p i {
+            color: #3498db;
+            width: 25px;
+            font-size: 1.1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .social-links a:hover {
+            background: #3498db;
+            transform: translateY(-4px);
+        }
+
+        .footer-col.links ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-col.links ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col.links ul li a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-col.links ul li a::before {
+            content: '\f105'; /* FontAwesome right arrow */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            font-size: 0.8rem;
+            color: #3498db;
+            transition: 0.3s;
+        }
+
+        .footer-col.links ul li a:hover {
+            color: #3498db;
+            padding-left: 6px;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 40px auto 0;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        .footer-bottom a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .footer-bottom a:hover {
+            color: #3498db;
+        }
+        :root { --primary: #2563eb; --accent: #10b981; --bg: #f8fafc; }
+        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: #1e293b; margin: 0; padding: 0; }
+        
+        .navbar { background: white; padding: 15px 40px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; }
+        .logo { font-size: 1.4rem; font-weight: 800; color: #1e3a8a; text-decoration: none; display: flex; align-items: center; gap: 10px; }
+        .container { max-width: 1000px; margin: 30px auto; padding: 0 20px; }
+        
+        .header-box { background: var(--primary); color: white; padding: 20px; border-radius: 10px; margin-bottom: 25px; display: flex; justify-content: space-between; align-items: center; }
+        
+        /* Hotel Cards */
+        .hotel-list { display: grid; gap: 20px; }
+        .hotel-card { background: white; border-radius: 12px; border: 1px solid #e2e8f0; display: flex; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: 0.3s; }
+        .hotel-card:hover { transform: translateY(-3px); box-shadow: 0 10px 15px rgba(0,0,0,0.1); }
+        .hotel-img { width: 300px; background-size: cover; background-position: center; }
+        .hotel-info { padding: 20px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+        .stars { color: #f59e0b; font-size: 0.9rem; margin-bottom: 5px; }
+        .hotel-name { font-size: 1.4rem; font-weight: 800; margin: 0 0 10px 0; color: #1e293b; }
+        .amenities { display: flex; gap: 15px; color: #64748b; font-size: 0.9rem; margin-bottom: 15px; }
+        .amenities i { color: var(--primary); }
+        .price-section { display: flex; justify-content: space-between; align-items: flex-end; border-top: 1px solid #e2e8f0; padding-top: 15px; }
+        .price { font-size: 1.6rem; font-weight: 800; color: #1e293b; }
+        .btn-book { background: var(--primary); color: white; border: none; padding: 10px 25px; border-radius: 8px; font-weight: 700; cursor: pointer; transition: 0.2s; }
+        .btn-book:hover { background: #1d4ed8; }
+
+        /* Modals & PDF */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); backdrop-filter: blur(4px); display: none; justify-content: center; align-items: center; z-index: 100; }
+        .modal { background: white; width: 450px; padding: 30px; border-radius: 16px; }
+        .input-group { margin-bottom: 15px; }
+        .input-group label { display: block; font-size: 0.85rem; font-weight: 600; color: #64748b; margin-bottom: 5px; }
+        .input-field { width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 8px; box-sizing: border-box; }
+        .btn-pay { width: 100%; padding: 14px; background: var(--accent); color: white; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; margin-top: 20px; }
+        
+        #ticketTemplate { display: none; width: 700px; background: white; padding: 40px; font-family: Helvetica, sans-serif; }
+        .t-table { width: 100%; border-collapse: collapse; margin-bottom: 20px;}
+        .t-table td, .t-table th { padding: 10px; border: 1px solid #ddd; text-align: left; }
+    </style>
+</head>
+<body>
+     <nav class="navbar">
+        <a href="index.html" class="logo"><img src="../images/Logo.gif" alt="Logo" style="height:32px; margin-right:10px; vertical-align:middle;"> Towards Point</a>
+        <div class="secure-badge"><i class="fas fa-shield-alt"></i> 100% Secure</div>
+    </nav>
+
+    <div class="container">
+        <div class="header-box">
+            <div>
+                <h2 style="margin:0 0 5px 0;">Hotels in <span id="displayCity">...</span></h2>
+                <div style="opacity:0.9;"><i class="far fa-calendar"></i> <span id="displayDates"></span></div>
+            </div>
+            <div style="text-align: right;">
+                <div style="font-size: 0.9rem;">1 Room, 2 Guests</div>
+            </div>
+        </div>
+
+        <div id="hotelList" class="hotel-list"></div>
+    </div>
+
+    <div class="modal-overlay" id="paymentModal">
+        <div class="modal">
+            <h3 style="margin-top:0;">Confirm Reservation</h3>
+            <p>Total Amount: <strong id="payAmount" style="color:var(--primary); font-size:1.2rem;"></strong></p>
+            
+            <div class="input-group"><label>Guest Name</label><input type="text" id="gName" class="input-field" placeholder="Full Name" required></div>
+            <div class="input-group"><label>Card Details</label><input type="text" class="input-field" placeholder="0000 0000 0000 0000"></div>
+            
+            <button class="btn-pay" onclick="processPayment()">Confirm Booking</button>
+            <button onclick="document.getElementById('paymentModal').style.display='none'" style="width:100%; background:none; border:none; color:#64748b; margin-top:15px; cursor:pointer;">Cancel</button>
+        </div>
+    </div>
+
+    <div id="ticketTemplate">
+        <div style="border-bottom: 4px solid #2563eb; padding-bottom: 20px; margin-bottom: 30px;">
+            <div style="font-size:24px; font-weight:800; color:#2563eb;">HOTEL RESERVATION VOUCHER</div>
+            <div style="color:#666; font-size:12px;">Booking ID: HTL-<span id="pdfBookingId"></span></div>
+        </div>
+        <table class="t-table">
+            <tr><th width="30%">Guest Name</th><td id="pdfName"></td></tr>
+            <tr><th>Hotel Name</th><td id="pdfHotelName" style="font-weight:bold;"></td></tr>
+            <tr><th>City</th><td id="pdfCity"></td></tr>
+            <tr><th>Check-in</th><td id="pdfCheckIn"></td></tr>
+            <tr><th>Check-out</th><td id="pdfCheckOut"></td></tr>
+            <tr><th>Total Paid</th><td id="pdfPrice" style="font-weight:bold; color:#10b981;"></td></tr>
+        </table>
+        <p style="font-size: 11px; color:#777; text-align:center;">Please present this voucher at the reception during check-in along with a valid ID.</p>
+    </div>
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-col branding">
+                <h3><i class="fas fa-compass"></i> Towards Point</h3>
+                <p>Your ultimate travel partner. Find the best deals on flights, trains, hotels, and holiday packages. Explore the world with us securely and effortlessly.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#flights">Book Flights</a></li>
+                    <li><a href="index.html#trains">Book Trains</a></li>
+                    <li><a href="index.html#hotels">Find Hotels</a></li>
+                    <li><a href="index.html#packages">Holiday Packages</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col contact">
+                <h4>Contact Us</h4>
+                <p><i class="fas fa-map-marker-alt"></i> Towards Point HQ, Bhayandar</p>
+                <p><i class="fas fa-phone-alt"></i> +91 98765 43210</p>
+                <p><i class="fas fa-envelope"></i> support@towardspoint.com</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Towards Point. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+        </div>
+    </footer>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const city = params.get('city') || 'Goa';
+        const checkin = params.get('checkin') || 'Today';
+        const checkout = params.get('checkout') || 'Tomorrow';
+
+        document.getElementById('displayCity').innerText = city.toUpperCase();
+        document.getElementById('displayDates').innerText = `${checkin} to ${checkout}`;
+
+        const hotels = [
+            { id: 1, name: `Grand ${city} Resort & Spa`, stars: "★★★★★", price: 8500, img: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=500", amenities: ["Free Breakfast", "Pool", "Spa"] },
+            { id: 2, name: `${city} City Center Hotel`, stars: "★★★★☆", price: 4200, img: "https://i.pinimg.com/1200x/2d/d7/fb/2dd7fb347241b614a53e89536c185c56.jpg", amenities: ["Free WiFi", "Gym", "Restaurant"] },
+            { id: 3, name: `Budget Stay ${city}`, stars: "★★★☆☆", price: 1800, img: "https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=500", amenities: ["Free WiFi", "AC Rooms"] }
+        ];
+
+        const listContainer = document.getElementById('hotelList');
+        hotels.forEach(h => {
+            listContainer.innerHTML += `
+                <div class="hotel-card">
+                    <div class="hotel-img" style="background-image: url('${h.img}');"></div>
+                    <div class="hotel-info">
+                        <div>
+                            <div class="stars">${h.stars}</div>
+                            <h3 class="hotel-name">${h.name}</h3>
+                            <div class="amenities">${h.amenities.map(a => `<span><i class="fas fa-check-circle"></i> ${a}</span>`).join('')}</div>
+                        </div>
+                        <div class="price-section">
+                            <div><div style="font-size:0.8rem; color:#64748b;">Per Night</div><div class="price">₹${h.price}</div></div>
+                            <button class="btn-book" onclick="openPayment(${h.id})">Book Room</button>
+                        </div>
+                    </div>
+                </div>`;
+        });
+
+        let selectedHotel = null;
+        function openPayment(id) {
+            selectedHotel = hotels.find(h => h.id === id);
+            document.getElementById('payAmount').innerText = `₹${selectedHotel.price}`;
+            document.getElementById('paymentModal').style.display = 'flex';
+        }
+
+        function processPayment() {
+            const name = document.getElementById('gName').value;
+            if (!name) return alert("Enter Guest Name");
+
+            const btn = document.querySelector('.btn-pay');
+            btn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Processing...`;
+            
+            setTimeout(() => {
+                document.getElementById('paymentModal').style.display = 'none';
+                
+                document.getElementById('pdfBookingId').innerText = Math.floor(Math.random() * 900000 + 100000);
+                document.getElementById('pdfName').innerText = name.toUpperCase();
+                document.getElementById('pdfHotelName').innerText = selectedHotel.name;
+                document.getElementById('pdfCity').innerText = city.toUpperCase();
+                document.getElementById('pdfCheckIn').innerText = checkin;
+                document.getElementById('pdfCheckOut').innerText = checkout;
+                document.getElementById('pdfPrice').innerText = `₹${selectedHotel.price}`;
+
+                const element = document.getElementById('ticketTemplate');
+                element.style.display = 'block';
+                html2pdf().set({ margin: 10, filename: `Hotel_Voucher_${name}.pdf` }).from(element).save().then(() => {
+                    element.style.display = 'none';
+                    alert("✅ Hotel Booked! Voucher Downloaded.");
+                    btn.innerHTML = "Confirm Booking";
+                });
+            }, 1500);
+        }
+    </script>
+</body>
+</html>

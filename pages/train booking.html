@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Train - Towards Point</title>
+    
+    <link rel="icon" type="image/gif" href="../images/Logo.gif">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <style>
+        /* =========================================
+           FOOTER CSS
+           ========================================= */
+        .site-footer {
+            background: #1e293b; /* Deep slate blue */
+            color: #f8fafc;
+            padding: 60px 20px 20px;
+            margin-top: 60px;
+            border-top: 4px solid #3498db; /* Blue accent line */
+            font-family: 'Segoe UI', sans-serif;
+            position: relative;
+            z-index: 10;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: space-between;
+        }
+
+        .footer-col {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-col h3 {
+            font-size: 1.6rem;
+            color: #ffffff;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-col h4 {
+            font-size: 1.2rem;
+            color: #ffffff;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 3px;
+            background: #3498db;
+            border-radius: 2px;
+        }
+
+        .footer-col p {
+            color: #cbd5e1;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+
+        .footer-col.contact p i {
+            color: #3498db;
+            width: 25px;
+            font-size: 1.1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .social-links a:hover {
+            background: #3498db;
+            transform: translateY(-4px);
+        }
+
+        .footer-col.links ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-col.links ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col.links ul li a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-col.links ul li a::before {
+            content: '\f105'; /* FontAwesome right arrow */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            font-size: 0.8rem;
+            color: #3498db;
+            transition: 0.3s;
+        }
+
+        .footer-col.links ul li a:hover {
+            color: #3498db;
+            padding-left: 6px;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 40px auto 0;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        .footer-bottom a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .footer-bottom a:hover {
+            color: #3498db;
+        }
+        :root {
+            --primary: #1e3a8a; /* Deep IRCTC-like blue */
+            --accent: #ea580c; /* Orange accent */
+            --bg: #f1f5f9;
+            --card: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg);
+            color: #1e293b;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: white;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid var(--accent);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .secure-badge {
+            background: #ecfdf5;
+            color: #059669;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            border: 1px solid #a7f3d0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        /* Step Indicator */
+        .steps {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #64748b;
+            background: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            align-items: center;
+        }
+
+        .steps a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .steps a:hover {
+            color: var(--primary);
+            text-decoration: underline;
+        }
+
+        .active-step { color: var(--accent); }
+
+        /* Route Header & Class Filter */
+        .route-header {
+            background: var(--primary);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .route-title { margin: 0; font-size: 1.4rem; font-weight: 700; }
+        
+        /* Date Picker Styling */
+        .route-date { 
+            display: flex; 
+            align-items: center; 
+            gap: 8px; 
+            background: rgba(255,255,255,0.15); 
+            padding: 8px 12px; 
+            border-radius: 6px; 
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        .route-date input[type="date"] {
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 1.05rem;
+            font-weight: 600;
+            font-family: inherit;
+            outline: none;
+            cursor: pointer;
+            color-scheme: dark; /* Makes the calendar icon white */
+        }
+
+        .filter-bar {
+            background: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .filter-bar select {
+            padding: 8px 12px;
+            border-radius: 6px;
+            border: 1px solid #cbd5e1;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #1e293b;
+            outline: none;
+            cursor: pointer;
+        }
+        .filter-bar select:focus { border-color: var(--accent); }
+
+        /* Train Results Area */
+        .train-list { display: grid; gap: 20px; }
+
+        .train-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e2e8f0;
+            overflow: hidden;
+        }
+
+        .train-header {
+            background: #f8fafc;
+            padding: 15px 20px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .train-name { font-size: 1.2rem; font-weight: 800; color: var(--primary); display: flex; align-items: center; gap: 10px; }
+        .train-number { background: #e2e8f0; color: #334155; padding: 4px 8px; border-radius: 4px; font-size: 0.9rem; font-weight: 700; }
+        .runs-on { font-size: 0.8rem; color: #64748b; font-weight: 600; }
+
+        .train-body { padding: 20px; }
+
+        .train-times {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .time-box { text-align: center; width: 30%; }
+        .time { font-size: 1.6rem; font-weight: 800; color: #0f172a; }
+        .station { font-size: 0.9rem; color: #64748b; font-weight: 600; margin-top: 5px; text-transform: uppercase; }
+
+        .duration-box { width: 30%; text-align: center; position: relative; }
+        .duration { font-size: 0.9rem; color: #64748b; font-weight: 600; background: white; padding: 0 10px; position: relative; z-index: 2; }
+        .line { position: absolute; top: 50%; left: 0; right: 0; height: 1px; border-top: 2px dashed #cbd5e1; z-index: 1; }
+
+        /* Multiple Classes Row */
+        .classes-container {
+            display: flex;
+            gap: 15px;
+            overflow-x: auto;
+            padding-bottom: 5px;
+        }
+
+        .class-box {
+            background: #f8fafc;
+            border: 1px solid #cbd5e1;
+            padding: 12px 15px;
+            border-radius: 8px;
+            min-width: 140px;
+            cursor: pointer;
+            transition: 0.2s;
+            position: relative;
+        }
+
+        .class-box:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            border-color: var(--accent);
+            background: #fffaf5;
+        }
+
+        .class-header { display: flex; justify-content: space-between; margin-bottom: 8px; font-weight: 700; color: #1e293b; }
+        .class-type { font-size: 1.1rem; color: var(--primary); }
+        .price { font-size: 1.1rem; color: var(--accent); }
+        
+        .status-avl { color: #059669; font-weight: 800; font-size: 0.9rem; }
+        .status-wl { color: #dc2626; font-weight: 800; font-size: 0.9rem; }
+        .status-rac { color: #d97706; font-weight: 800; font-size: 0.9rem; }
+
+        .book-hint {
+            font-size: 0.75rem; color: #94a3b8; font-weight: 600; margin-top: 8px; text-transform: uppercase;
+        }
+
+        /* Payment Modal */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(3px);
+            display: none; justify-content: center; align-items: center; z-index: 1000;
+        }
+
+        .modal {
+            background: white; width: 450px; padding: 30px; border-radius: 12px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+        .modal-header { margin-bottom: 20px; border-bottom: 1px solid #e2e8f0; padding-bottom: 15px; }
+        .modal-title { font-size: 1.25rem; font-weight: 700; color: #1e293b; margin: 0; }
+        
+        .input-group { margin-bottom: 15px; }
+        .input-group label { display: block; font-size: 0.85rem; font-weight: 600; color: #64748b; margin-bottom: 5px; }
+        .input-field { width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 0.95rem; box-sizing: border-box; }
+        .input-field:focus { border-color: var(--primary); outline: none; box-shadow: 0 0 0 2px #bfdbfe; }
+
+        /* Fake Credit Card UI */
+        .card-ui { background: #f8fafc; border: 1px solid #e2e8f0; padding: 15px; border-radius: 8px; margin-top: 15px; }
+        .row-flex { display: flex; gap: 10px; }
+        
+        .btn-pay {
+            width: 100%; padding: 14px; background: #059669; color: white;
+            border: none; border-radius: 6px; font-weight: 700; font-size: 1.1rem;
+            cursor: pointer; margin-top: 20px;
+        }
+        .btn-pay:hover { background: #047857; }
+
+        /* PDF TICKET TEMPLATE (IRCTC ERS STYLE) */
+        #ticketTemplate {
+            display: none; width: 800px; background: white; padding: 30px; font-family: 'Arial', sans-serif; color: #000;
+        }
+        .ers-header { text-align: center; border-bottom: 2px solid #000; padding-bottom: 10px; margin-bottom: 20px; }
+        .ers-title { font-size: 20px; font-weight: 900; }
+        .ers-subtitle { font-size: 12px; font-weight: bold; margin-top: 5px; }
+        .t-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+        .t-table th, .t-table td { border: 1px solid #000; padding: 8px; text-align: left; font-size: 13px; }
+        .t-table th { background-color: #f1f1f1; font-weight: bold; }
+        .pnr-box { font-size: 18px; font-weight: bold; padding: 10px; background: #f8f8f8; border: 2px solid #000; margin-bottom: 20px; display: inline-block;}
+        .ers-footer { font-size: 10px; color: #555; text-align: center; margin-top: 30px; border-top: 1px solid #ccc; padding-top: 10px; }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <a href="index.html" class="logo"><img src="../images/Logo.gif" alt="Logo" style="height:32px; margin-right:10px; vertical-align:middle;"> Towards Point</a>
+        <div class="secure-badge"><i class="fas fa-shield-alt"></i> 100% Secure</div>
+    </nav>
+
+    <div class="container">
+        <div class="steps">
+            <a href="index.html" title="Go back to Home">1. Plan Journey</a> 
+            <i class="fas fa-chevron-right" style="font-size:0.8rem; padding-top:2px;"></i>
+            <span class="active-step">2. Select Train & Class</span> 
+            <i class="fas fa-chevron-right" style="font-size:0.8rem; padding-top:2px;"></i>
+            <span>3. Passenger Details & Pay</span>
+        </div>
+
+        <div class="route-header">
+            <h2 class="route-title" id="routeHeader">NDLS <i class="fas fa-long-arrow-alt-right"></i> CSMT</h2>
+            
+            <div class="route-date">
+                <i class="far fa-calendar-alt"></i>
+                <input type="date" id="journeyDate" onchange="changeJourneyDate()">
+            </div>
+        </div>
+
+        <div class="filter-bar">
+            <strong style="color: #1e293b;"><i class="fas fa-filter"></i> Class Preference:</strong>
+            <select id="classPref" onchange="filterTrains()">
+                <option value="ALL">All Classes</option>
+                <option value="1A">First AC (1A)</option>
+                <option value="2A">Second AC (2A)</option>
+                <option value="3A">Third AC (3A)</option>
+                <option value="CC">AC Chair Car (CC)</option>
+                <option value="SL">Sleeper (SL)</option>
+            </select>
+        </div>
+
+        <div id="trainListContainer" class="train-list"></div>
+    </div>
+
+    <div class="modal-overlay" id="paymentModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Passenger & Payment</h3>
+                <div style="font-size:0.95rem; color:#64748b; margin-top:5px;">
+                    Selected Class: <strong id="payClass" style="color:var(--primary);"></strong><br>
+                    Total Fare: <strong id="payAmount" style="color:var(--accent); font-size: 1.2rem;"></strong>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>Passenger Full Name</label>
+                <input type="text" id="pName" class="input-field" placeholder="Must match Govt. ID" required>
+            </div>
+            
+            <div class="row-flex">
+                <div class="input-group" style="flex:1;">
+                    <label>Age</label>
+                    <input type="number" id="pAge" class="input-field" placeholder="Years" required>
+                </div>
+                <div class="input-group" style="flex:1;">
+                    <label>Gender</label>
+                    <select id="pGender" class="input-field">
+                        <option>Male</option>
+                        <option>Female</option>
+                        <option>Transgender</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="card-ui">
+                <div style="font-size:0.85rem; font-weight:700; margin-bottom:10px; color:#475569;">
+                    <i class="far fa-credit-card"></i> Payment Details
+                </div>
+                <div class="input-group"><input type="text" class="input-field" placeholder="Card Number" maxlength="19"></div>
+                <div class="row-flex">
+                    <input type="text" class="input-field" placeholder="MM/YY" style="flex:1">
+                    <input type="password" class="input-field" placeholder="CVV" style="flex:1">
+                </div>
+            </div>
+
+            <button class="btn-pay" onclick="processFakePayment()">Make Payment</button>
+            <button onclick="closeModal()" style="width:100%; background:none; border:none; color:#64748b; margin-top:15px; cursor:pointer; font-weight: 600;">Cancel</button>
+        </div>
+    </div>
+
+    <div id="ticketTemplate">
+        <div class="ers-header">
+            <div class="ers-title">ELECTRONIC RESERVATION SLIP (ERS)</div>
+            <div class="ers-subtitle">Towards Point Authorized Ticketing Center</div>
+        </div>
+
+        <div class="pnr-box" id="pdfPnr">PNR NO: 8421567890</div>
+
+        <table class="t-table">
+            <tr>
+                <th>Train No. & Name</th>
+                <td id="pdfTrainName" colspan="3" style="font-weight: bold; font-size: 15px;"></td>
+            </tr>
+            <tr>
+                <th>Date of Journey</th>
+                <td id="pdfDate"></td>
+                <th>Class</th>
+                <td id="pdfClass" style="font-weight: bold; font-size: 15px;"></td>
+            </tr>
+            <tr>
+                <th>From Station</th>
+                <td id="pdfFrom"></td>
+                <th>To Station</th>
+                <td id="pdfTo"></td>
+            </tr>
+            <tr>
+                <th>Departure Time</th>
+                <td id="pdfDep"></td>
+                <th>Arrival Time</th>
+                <td id="pdfArr"></td>
+            </tr>
+            <tr>
+                <th>Distance</th><td>1384 KM</td><th>Quota</th><td>GENERAL (GN)</td>
+            </tr>
+        </table>
+
+        <div style="font-weight: bold; margin-bottom: 5px;">Passenger Details:</div>
+        <table class="t-table">
+            <tr><th>#</th><th>Name</th><th>Age</th><th>Sex</th><th>Booking Status</th><th>Current Status</th></tr>
+            <tr>
+                <td>1</td>
+                <td id="pdfPassName"></td><td id="pdfPassAge"></td><td id="pdfPassSex"></td>
+                <td id="pdfBookStatus" style="font-weight: bold;"></td>
+                <td id="pdfCurrStatus" style="font-weight: bold;"></td>
+            </tr>
+        </table>
+
+        <table class="t-table" style="width: 50%;">
+            <tr><th>Total Ticket Fare</th><td id="pdfFare" style="font-weight: bold; font-size: 16px;"></td></tr>
+        </table>
+
+        <div class="ers-footer">
+            * This is a computer generated E-Ticket. Please carry an original Government approved ID proof during the journey.<br>
+            * Have a safe and happy journey! - Towards Point
+        </div>
+    </div>
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-col branding">
+                <h3><i class="fas fa-compass"></i> Towards Point</h3>
+                <p>Your ultimate travel partner. Find the best deals on flights, trains, hotels, and holiday packages. Explore the world with us securely and effortlessly.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#flights">Book Flights</a></li>
+                    <li><a href="index.html#trains">Book Trains</a></li>
+                    <li><a href="index.html#hotels">Find Hotels</a></li>
+                    <li><a href="index.html#packages">Holiday Packages</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col contact">
+                <h4>Contact Us</h4>
+                <p><i class="fas fa-map-marker-alt"></i> Towards Point HQ, Bhayandar</p>
+                <p><i class="fas fa-phone-alt"></i> +91 98765 43210</p>
+                <p><i class="fas fa-envelope"></i> support@towardspoint.com</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Towards Point. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // 1. Core Logic & Variables
+        const params = new URLSearchParams(window.location.search);
+        const searchData = {
+            from: (params.get('from') || 'NDLS').toUpperCase(),
+            to: (params.get('to') || 'CSMT').toUpperCase(),
+            date: params.get('date') || new Date().toISOString().split('T')[0],
+            prefClass: params.get('class') || 'ALL'
+        };
+
+        // NEW: Populate Date Picker with correct date from URL
+        document.getElementById('journeyDate').value = searchData.date;
+        document.getElementById('classPref').value = searchData.prefClass;
+
+        // NEW: Function to change date and reload search
+        function changeJourneyDate() {
+            const newDate = document.getElementById('journeyDate').value;
+            const urlParams = new URLSearchParams(window.location.search);
+            urlParams.set('date', newDate);
+            window.location.search = urlParams.toString(); // Reloads page with new date
+        }
+
+        document.getElementById('routeHeader').innerHTML = `${searchData.from} <i class="fas fa-arrow-right" style="opacity:0.7; margin:0 10px;"></i> ${searchData.to}`;
+
+        let selectedTrain = null;
+        let selectedClassData = null;
+
+        // MOCK DATA: Trains with multiple classes
+        const mockTrains = [
+            { 
+                id: 1, name: "RAJDHANI EXP", number: "12952", dep: "16:55", arr: "08:35", dur: "15h 40m", runsOn: "M T W T F S S",
+                classes: [
+                    { type: "3A", price: 2850, status: "AVAILABLE 0042", statusType: "status-avl" },
+                    { type: "2A", price: 3950, status: "WL 12", statusType: "status-wl" },
+                    { type: "1A", price: 4800, status: "AVAILABLE 0004", statusType: "status-avl" }
+                ]
+            },
+            { 
+                id: 2, name: "PUNJAB MAIL", number: "12138", dep: "05:15", arr: "07:35", dur: "26h 20m", runsOn: "M T W T F S S",
+                classes: [
+                    { type: "SL", price: 680, status: "AVAILABLE 0112", statusType: "status-avl" },
+                    { type: "3A", price: 1850, status: "RAC 22", statusType: "status-rac" },
+                    { type: "2A", price: 2600, status: "WL 4", statusType: "status-wl" }
+                ]
+            },
+            { 
+                id: 3, name: "TEJAS RAJ EXP", number: "82902", dep: "15:45", arr: "00:20", dur: "08h 35m", runsOn: "M T - T F S -",
+                classes: [
+                    { type: "CC", price: 1540, status: "WL 15", statusType: "status-wl" }
+                ]
+            },
+            { 
+                id: 4, name: "GARIBRATH EXP", number: "12910", dep: "16:30", arr: "08:10", dur: "15h 40m", runsOn: "M - W - F - S",
+                classes: [
+                    { type: "3A", price: 1050, status: "RAC 12", statusType: "status-rac" }
+                ]
+            }
+        ];
+
+        // Filter and Render Trains based on Dropdown
+        function filterTrains() {
+            const pref = document.getElementById('classPref').value;
+            renderTrains(pref);
+        }
+
+        function renderTrains(prefClass = "ALL") {
+            const listContainer = document.getElementById('trainListContainer');
+            listContainer.innerHTML = '';
+
+            mockTrains.forEach(train => {
+                let availableClasses = train.classes;
+                if (prefClass !== "ALL") {
+                    availableClasses = train.classes.filter(c => c.type === prefClass);
+                }
+
+                if (availableClasses.length === 0) return; 
+
+                let classesHtml = '';
+                availableClasses.forEach(cls => {
+                    classesHtml += `
+                        <div class="class-box" onclick="openPayment(${train.id}, '${cls.type}', ${cls.price}, '${cls.status}')">
+                            <div class="class-header">
+                                <span class="class-type">${cls.type}</span>
+                                <span class="price">₹${cls.price}</span>
+                            </div>
+                            <div class="${cls.statusType}">${cls.status}</div>
+                            <div class="book-hint">Click to Book</div>
+                        </div>
+                    `;
+                });
+
+                listContainer.innerHTML += `
+                    <div class="train-card">
+                        <div class="train-header">
+                            <div class="train-name">${train.name} <span class="train-number">${train.number}</span></div>
+                            <div class="runs-on">Runs On: <span style="color:#1e293b;">${train.runsOn}</span></div>
+                        </div>
+                        <div class="train-body">
+                            <div class="train-times">
+                                <div class="time-box"><div class="time">${train.dep}</div><div class="station">${searchData.from}</div></div>
+                                <div class="duration-box"><div class="line"></div><span class="duration">${train.dur}</span></div>
+                                <div class="time-box"><div class="time">${train.arr}</div><div class="station">${searchData.to}</div></div>
+                            </div>
+                            <div class="classes-container">${classesHtml}</div>
+                        </div>
+                    </div>`;
+            });
+
+            if (listContainer.innerHTML === '') {
+                listContainer.innerHTML = `<div style="padding:30px; text-align:center; background:white; border-radius:8px; color:#64748b;">No trains available for the selected class preference.</div>`;
+            }
+        }
+
+        renderTrains(searchData.prefClass);
+
+        // Modal Logic
+        function openPayment(id, type, price, status) {
+            selectedTrain = mockTrains.find(t => t.id === id);
+            selectedClassData = { type, price, status };
+            
+            document.getElementById('payClass').innerText = selectedClassData.type;
+            document.getElementById('payAmount').innerText = `₹${selectedClassData.price}`;
+            document.getElementById('paymentModal').style.display = 'flex';
+        }
+
+        function closeModal() { document.getElementById('paymentModal').style.display = 'none'; }
+
+        // Payment Simulation
+        function processFakePayment() {
+            const name = document.getElementById('pName').value;
+            const age = document.getElementById('pAge').value;
+            const gender = document.getElementById('pGender').value;
+
+            if (!name || !age) { alert("Please fill all passenger details."); return; }
+
+            const btn = document.querySelector('.btn-pay');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = `<i class="fas fa-circle-notch fa-spin"></i> Processing Securely...`;
+            btn.style.background = "#334155";
+
+            setTimeout(() => {
+                btn.innerHTML = `<i class="fas fa-check"></i> Booking Confirmed!`;
+                btn.style.background = "#059669";
+                setTimeout(() => {
+                    closeModal();
+                    generateTicket(name, age, gender); 
+                    alert("✅ PNR Generated! Your ticket is downloading.");
+                    btn.innerHTML = originalText;
+                }, 1000);
+            }, 2000);
+        }
+
+        // PDF Generation
+        function generateTicket(pName, pAge, pGender) {
+            const randomPNR = Math.floor(1000000000 + Math.random() * 9000000000);
+            const randomSeat = Math.floor(1 + Math.random() * 72);
+            let seatType = "SU"; 
+            if(selectedClassData.type === 'SL') seatType = "MB"; 
+            if(selectedClassData.type === 'CC') seatType = "WS";
+
+            // Grab the currently selected date from the calendar input for the ticket
+            const finalJourneyDate = new Date(document.getElementById('journeyDate').value);
+            const finalFormattedDate = finalJourneyDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+
+            document.getElementById('pdfPnr').innerText = "PNR NO: " + randomPNR;
+            document.getElementById('pdfTrainName').innerText = `${selectedTrain.number} / ${selectedTrain.name}`;
+            document.getElementById('pdfDate').innerText = finalFormattedDate;
+            document.getElementById('pdfClass').innerText = selectedClassData.type;
+            document.getElementById('pdfFrom').innerText = searchData.from;
+            document.getElementById('pdfTo').innerText = searchData.to;
+            document.getElementById('pdfDep').innerText = selectedTrain.dep;
+            document.getElementById('pdfArr').innerText = selectedTrain.arr;
+            
+            document.getElementById('pdfPassName').innerText = pName.toUpperCase();
+            document.getElementById('pdfPassAge').innerText = pAge;
+            document.getElementById('pdfPassSex').innerText = pGender.charAt(0);
+            document.getElementById('pdfFare').innerText = "₹ " + selectedClassData.price + ".00";
+
+            if(selectedClassData.status.includes('WL')) {
+                document.getElementById('pdfBookStatus').innerText = selectedClassData.status;
+                document.getElementById('pdfCurrStatus').innerText = selectedClassData.status;
+            } else {
+                document.getElementById('pdfBookStatus').innerText = `CNF/${selectedClassData.type}/${randomSeat}/${seatType}`;
+                document.getElementById('pdfCurrStatus').innerText = "CNF";
+            }
+
+            const element = document.getElementById('ticketTemplate');
+            element.style.display = 'block';
+
+            html2pdf().set({
+                margin: 10, filename: `IRCTC_Ticket_${randomPNR}.pdf`,
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            }).from(element).save().then(() => { element.style.display = 'none'; });
+        }
+    </script>
+</body>
+</html>

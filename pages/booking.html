@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>    <link rel='icon' type='image/gif' href='../images/Logo.gif'>
+
+    <link rel='icon' type='image/gif' href='../images/Logo.gif'>
+
+    <link rel='icon' type='image/gif' href='../images/Logo.gif'>
+     <link rel='icon' type='image/gif' href='../images/Logo.gif'>
+     <link rel='icon' type='image/gif' href='../images/Logo.gif'>
+     <link rel='icon' type='image/gif' href='../images/Logo.gif'>
+     <link rel='icon' type='image/gif' href='../images/Logo.gif'>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select & Book - Towards Point</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <style>
+        /* =========================================
+           FOOTER CSS
+           ========================================= */
+        .site-footer {
+            background: #1e293b; /* Deep slate blue */
+            color: #f8fafc;
+            padding: 60px 20px 20px;
+            margin-top: 60px;
+            border-top: 4px solid #3498db; /* Blue accent line */
+            font-family: 'Segoe UI', sans-serif;
+            position: relative;
+            z-index: 10;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: space-between;
+        }
+
+        .footer-col {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-col h3 {
+            font-size: 1.6rem;
+            color: #ffffff;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-col h4 {
+            font-size: 1.2rem;
+            color: #ffffff;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 3px;
+            background: #3498db;
+            border-radius: 2px;
+        }
+
+        .footer-col p {
+            color: #cbd5e1;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+
+        .footer-col.contact p i {
+            color: #3498db;
+            width: 25px;
+            font-size: 1.1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .social-links a:hover {
+            background: #3498db;
+            transform: translateY(-4px);
+        }
+
+        .footer-col.links ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-col.links ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col.links ul li a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-col.links ul li a::before {
+            content: '\f105'; /* FontAwesome right arrow */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            font-size: 0.8rem;
+            color: #3498db;
+            transition: 0.3s;
+        }
+
+        .footer-col.links ul li a:hover {
+            color: #3498db;
+            padding-left: 6px;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 40px auto 0;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        .footer-bottom a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .footer-bottom a:hover {
+            color: #3498db;
+        }
+        :root {
+            --primary: #2563eb;
+            --bg: #f8fafc;
+            --card: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: var(--bg);
+            color: #1e293b;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: white;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #1e3a8a;
+            text-decoration: none;
+        }
+
+        .secure-badge {
+            background: #ecfdf5;
+            color: #059669;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        /* Step Indicator */
+        .steps {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #64748b;
+        }
+
+        .active-step {
+            color: var(--primary);
+        }
+
+        /* Flight Results Area */
+        .flight-list {
+            display: grid;
+            gap: 20px;
+        }
+
+        .flight-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: 0.2s;
+        }
+
+        .flight-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary);
+        }
+
+        .airline-box {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            width: 35%;
+        }
+
+        .logo-box {
+            width: 64px;
+            height: 64px;
+            background: #ffffff;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.2rem;
+            overflow: hidden;
+            border: 1px solid #dbeafe;
+            flex-shrink: 0;
+        }
+
+        .airline-logo {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .logo-fallback {
+            font-size: 0.85rem;
+            font-weight: 800;
+            color: #1d4ed8;
+            letter-spacing: 0.04em;
+        }
+
+        .price-box {
+            text-align: right;
+        }
+
+        .price {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #1e293b;
+        }
+
+        .btn-select {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .btn-select:hover {
+            background: #1d4ed8;
+        }
+
+        /* Payment Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .modal {
+            background: white;
+            width: 450px;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 15px;
+        }
+
+        .modal-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin: 0;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #64748b;
+            margin-bottom: 5px;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            box-sizing: border-box;
+        }
+
+        .input-field:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 2px #bfdbfe;
+        }
+
+        /* Fake Credit Card UI */
+        .card-ui {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+
+        .row-flex {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-pay {
+            width: 100%;
+            padding: 14px;
+            background: #10b981;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .btn-pay:hover {
+            background: #059669;
+        }
+
+        /* Hidden Ticket Template (Table Layout) */
+        #ticketTemplate {
+            display: none;
+            width: 700px;
+            background: white;
+            padding: 40px;
+            font-family: Helvetica, sans-serif;
+        }
+
+        .t-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .t-table td {
+            padding: 8px;
+            vertical-align: top;
+        }
+
+        .t-label {
+            font-size: 10px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .t-val {
+            font-size: 14px;
+            font-weight: bold;
+            color: #000;
+        }
+
+        .t-lg {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--primary);
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <a href="index.html" class="logo"><img src="../images/Logo.gif" alt="Logo" style="height:32px; margin-right:10px; vertical-align:middle;"> Towards Point</a>
+        <div class="secure-badge"><i class="fas fa-lock"></i> Secure Payment</div>
+    </nav>
+
+    <div class="container">
+        <div class="steps">
+            <span>1. Search</span> <i class="fas fa-chevron-right" style="font-size:0.8rem; padding-top:4px;"></i>
+            <span class="active-step">2. Select Flight</span> <i class="fas fa-chevron-right"
+                style="font-size:0.8rem; padding-top:4px;"></i>
+            <span>3. Pay & Fly</span>
+        </div>
+
+        <h2 id="routeHeader">Searching Flights...</h2>
+        <div id="flightListContainer" class="flight-list">
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="paymentModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Confirm Booking</h3>
+                <div style="font-size:0.9rem; color:#64748b; margin-top:5px;">You are paying <strong id="payAmount"
+                        style="color:#1e293b;"></strong></div>
+            </div>
+
+            <div class="input-group">
+                <label>Passenger Name</label>
+                <input type="text" id="pName" class="input-field" placeholder="As on Govt ID">
+            </div>
+
+            <div class="card-ui">
+                <div style="font-size:0.85rem; font-weight:700; margin-bottom:10px; color:#475569;"><i
+                        class="far fa-credit-card"></i> Card Details</div>
+                <div class="input-group">
+                    <input type="text" class="input-field" placeholder="0000 0000 0000 0000" maxlength="19">
+                </div>
+                <div class="row-flex">
+                    <input type="text" class="input-field" placeholder="MM/YY" style="flex:1">
+                    <input type="password" class="input-field" placeholder="CVV" style="flex:1">
+                </div>
+            </div>
+
+            <button class="btn-pay" onclick="processFakePayment()">Pay Securely</button>
+            <button onclick="closeModal()"
+                style="width:100%; background:none; border:none; color:#64748b; margin-top:15px; cursor:pointer;">Cancel</button>
+        </div>
+    </div>
+
+    <div id="ticketTemplate">
+        <div style="border-bottom: 4px solid #2563eb; padding-bottom: 20px; margin-bottom: 30px;">
+            <table class="t-table">
+                <tr>
+                    <td>
+                        <div style="font-size:24px; font-weight:800; color:#2563eb;">E-TICKET</div>
+                        <div style="color:#666; font-size:12px;">Towards Point Booking Reference</div>
+                    </td>
+                    <td style="text-align:right;">
+                        <div style="font-size:18px; font-weight:bold; color:#059669;">CONFIRMED</div>
+                        <div class="t-val" id="pdfPnr">PNR: TH-8829</div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <table class="t-table" style="margin-bottom:20px;">
+            <tr>
+                <td width="50%">
+                    <div class="t-label">Passenger Name</div>
+                    <div class="t-val" id="pdfName" style="font-size:18px;">JOHN DOE</div>
+                </td>
+                <td width="50%">
+                    <div class="t-label">Flight Number</div>
+                    <div class="t-val" id="pdfFlight">6E-554</div>
+                </td>
+            </tr>
+        </table>
+
+        <div style="background:#f8fafc; border:1px solid #e2e8f0; padding:20px; border-radius:8px;">
+            <table class="t-table">
+                <tr>
+                    <td width="30%">
+                        <div class="t-label">From</div>
+                        <div class="t-lg" id="pdfFrom">BOM</div>
+                    </td>
+                    <td width="40%" style="text-align:center; vertical-align:middle;">
+                        <img src="https://cdn-icons-png.flaticon.com/512/723/723955.png" width="30"
+                            style="opacity:0.3;">
+                    </td>
+                    <td width="30%" style="text-align:right;">
+                        <div class="t-label">To</div>
+                        <div class="t-lg" id="pdfTo">DEL</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="t-val" id="pdfDate">20 Oct 2025</div>
+                    </td>
+                    <td style="text-align:center; color:#64748b; font-size:12px;">Non-Stop</td>
+                    <td style="text-align:right;">
+                        <div class="t-val">Economy</div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div style="margin-top:40px; text-align:center; font-size:10px; color:#94a3b8;">
+            Thank you for booking with Travel Heaven. Please carry a valid ID.
+        </div>
+    </div>
+<footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-col branding">
+                <h3><i class="fas fa-compass"></i> Towards Point</h3>
+                <p>Your ultimate travel partner. Find the best deals on flights, trains, hotels, and holiday packages. Explore the world with us securely and effortlessly.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#flights">Book Flights</a></li>
+                    <li><a href="index.html#trains">Book Trains</a></li>
+                    <li><a href="index.html#hotels">Find Hotels</a></li>
+                    <li><a href="index.html#packages">Holiday Packages</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col contact">
+                <h4>Contact Us</h4>
+                <p><i class="fas fa-map-marker-alt"></i> Towards Point HQ, Bhayandar</p>
+                <p><i class="fas fa-phone-alt"></i> +91 98765 43210</p>
+                <p><i class="fas fa-envelope"></i> support@towardspoint.com</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Towards Point. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+        </div>
+    </footer>
+    <script>
+        // 1. CONFIG & STATE
+        const params = new URLSearchParams(window.location.search);
+        const searchData = {
+            from: params.get('from') || 'MUMBAI',
+            to: params.get('to') || 'DELHI',
+            date: params.get('date') || new Date().toISOString().split('T')[0]
+        };
+
+        let selectedFlight = null;
+
+        // Display Header
+        document.getElementById('routeHeader').innerHTML = `Flights from ${searchData.from} to ${searchData.to}`;
+
+        // 2. SIMULATE DUFFEL API (DATA FETCHING)
+        // ---------------------------------------------------------
+        // TODO: Later, replace this array with a fetch() call to Duffel API
+        // ---------------------------------------------------------
+        const mockFlights = [
+            {
+                id: 1,
+                airline: "Indigo",
+                code: "6E-502",
+                time: "06:00 - 08:15",
+                price: 4200,
+                logo: "https://play-lh.googleusercontent.com/OhZSLjRDLvFLqtDp9bIgcvAweZIg5V5uIMI_7kOaS-9nPR043DUfoibkn1BgwG7Ai1U=s96-rw"
+            },
+            {
+                id: 2,
+                airline: "Air India",
+                code: "AI-885",
+                time: "10:30 - 13:00",
+                price: 5150,
+                logo: "https://assets.cntraveller.in/photos/64d4fcd5e068ea9cfa3c151c/master/w_1600,c_limit/air-india-logo.jpg"
+            },
+            {
+                id: 3,
+                airline: "Vistara",
+                code: "UK-992",
+                time: "16:45 - 19:10",
+                price: 6200,
+                logo: "https://thehardcopy.co/wp-content/uploads/Vistara-Images-7-768x515.png"
+            },
+            {
+                id: 4,
+                airline: "Akasa Air",
+                code: "QP-140",
+                time: "21:00 - 23:30",
+                price: 3800,
+                logo: "https://logos-world.net/wp-content/uploads/2022/01/Akasa-Air-Emblem.png"
+            }
+        ];
+
+        function getAirlineFallback(name) {
+            return name
+                .split(" ")
+                .map(word => word[0])
+                .join("")
+                .slice(0, 2)
+                .toUpperCase();
+        }
+
+        function renderAirlineLogo(flight) {
+            if (flight.logo && flight.logo.trim()) {
+                return `<img src="${flight.logo}" alt="${flight.airline} logo" class="airline-logo">`;
+            }
+
+            return `<span class="logo-fallback">${getAirlineFallback(flight.airline)}</span>`;
+        }
+
+        // Render List
+        const listContainer = document.getElementById('flightListContainer');
+        mockFlights.forEach(f => {
+            listContainer.innerHTML += `
+                <div class="flight-card">
+                    <div class="airline-box">
+                        <div class="logo-box">${renderAirlineLogo(f)}</div>
+                        <div>
+                            <div style="font-weight:700; color:#1e3a8a;">${f.airline}</div>
+                            <div style="font-size:0.85rem; color:#64748b;">${f.code}</div>
+                        </div>
+                    </div>
+                    <div style="text-align:center;">
+                        <div style="font-weight:700; font-size:1.1rem;">${f.time}</div>
+                        <div style="font-size:0.8rem; color:#64748b;">${searchData.date}</div>
+                    </div>
+                    <div class="price-box">
+                        <div class="price">₹${f.price}</div>
+                        <button class="btn-select" onclick="openPayment(${f.id})">Select</button>
+                    </div>
+                </div>`;
+        });
+
+        // 3. UI FUNCTIONS
+        function openPayment(id) {
+            selectedFlight = mockFlights.find(f => f.id === id);
+            document.getElementById('payAmount').innerText = `₹${selectedFlight.price}`;
+            document.getElementById('paymentModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('paymentModal').style.display = 'none';
+        }
+
+        // 4. SIMULATE RAZORPAY & BOOKING
+        function processFakePayment() {
+            const name = document.getElementById('pName').value;
+            if (!name) { alert("Please enter passenger name"); return; }
+
+            const btn = document.querySelector('.btn-pay');
+            const originalText = btn.innerHTML;
+
+            // A. FAKE PROCESSING ANIMATION
+            btn.innerHTML = `<i class="fas fa-circle-notch fa-spin"></i> Processing...`;
+            btn.style.background = "#334155";
+
+            // ---------------------------------------------------------
+            // TODO: Later, put Razorpay .open() code here
+            // ---------------------------------------------------------
+            setTimeout(() => {
+
+                // B. PAYMENT SUCCESS SCENARIO
+                btn.innerHTML = `<i class="fas fa-check"></i> Success!`;
+                btn.style.background = "#10b981";
+
+                setTimeout(() => {
+                    closeModal();
+                    generateTicket(name); // Call Ticket Generator
+                    alert("✅ Booking Confirmed! Ticket Downloading...");
+                    btn.innerHTML = originalText;
+                }, 1000);
+
+            }, 2000); // 2 seconds fake delay
+        }
+
+        // 5. PDF TICKET GENERATOR
+        function generateTicket(passengerName) {
+            // Fill Data
+            document.getElementById('pdfName').innerText = passengerName.toUpperCase();
+            document.getElementById('pdfFlight').innerText = selectedFlight.code;
+            document.getElementById('pdfFrom').innerText = searchData.from.substring(0, 3).toUpperCase();
+            document.getElementById('pdfTo').innerText = searchData.to.substring(0, 3).toUpperCase();
+            document.getElementById('pdfDate').innerText = searchData.date;
+            document.getElementById('pdfPnr').innerText = "PNR: TH-" + Math.floor(Math.random() * 90000 + 10000);
+
+            // Generate
+            const element = document.getElementById('ticketTemplate');
+            element.style.display = 'block';
+
+            const opt = {
+                margin: 10,
+                filename: `Ticket-${selectedFlight.code}.pdf`,
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+
+            html2pdf().set(opt).from(element).save().then(() => {
+                element.style.display = 'none';
+            });
+        }
+    </script>
+</body>
+
+</html>

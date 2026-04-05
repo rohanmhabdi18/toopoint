@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel='icon' type='image/gif' href='../images/Logo.gif'>
+
+    <link rel='icon' type='image/gif' href='../images/Logo.gif'>
+
+    <link rel='icon' type='image/gif' href='../images/Logo.gif'>
+    <link rel='icon' type='image/gif' href='../images/Logo.gif'>
+    <link rel='icon' type='image/gif' href='../images/Logo.gif'>
+    <link rel='icon' type='image/gif' href='../images/Logo.gif'>
+    <link rel='icon' type='image/gif' href='../images/Logo.gif'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Towards Point - Review & Pay</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* =========================================
+           FOOTER CSS
+           ========================================= */
+        .site-footer {
+            background: #1e293b;
+            /* Deep slate blue */
+            color: #f8fafc;
+            padding: 60px 20px 20px;
+            margin-top: 60px;
+            border-top: 4px solid #3498db;
+            /* Blue accent line */
+            font-family: 'Segoe UI', sans-serif;
+            position: relative;
+            z-index: 10;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: space-between;
+        }
+
+        .footer-col {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-col h3 {
+            font-size: 1.6rem;
+            color: #ffffff;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-col h4 {
+            font-size: 1.2rem;
+            color: #ffffff;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 3px;
+            background: #3498db;
+            border-radius: 2px;
+        }
+
+        .footer-col p {
+            color: #cbd5e1;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+
+        .footer-col.contact p i {
+            color: #3498db;
+            width: 25px;
+            font-size: 1.1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .brand-mark {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: rgba(52, 152, 219, 0.18);
+            color: #ffffff;
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .social-text-icon {
+            font-size: 0.9rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .social-links a:hover {
+            background: #3498db;
+            transform: translateY(-4px);
+        }
+
+        .footer-col.links ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-col.links ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col.links ul li a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-col.links ul li a::before {
+            content: '\f105';
+            /* FontAwesome right arrow */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            font-size: 0.8rem;
+            color: #3498db;
+            transition: 0.3s;
+        }
+
+        .footer-col.links ul li a:hover {
+            color: #3498db;
+            padding-left: 6px;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 40px auto 0;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        .footer-bottom a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .footer-bottom a:hover {
+            color: #3498db;
+        }
+
+        /* --- Global Styles --- */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+
+        /* --- Headers --- */
+        .page-header {
+            background: #fff;
+            padding: 20px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            margin-bottom: 20px;
+        }
+
+        .header-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #050562;
+            display: flex;
+            align-items: center;
+        }
+
+        .brand-link {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .brand img {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 10px;
+        }
+
+        .brand span {
+            color: #050562;
+        }
+
+        .step-indicator {
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        /* --- Section Cards --- */
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 25px;
+        }
+
+        h2 {
+            margin-top: 0;
+            color: #2c3e50;
+            font-size: 1.4rem;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* --- Table --- */
+        .traveler-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+
+        .traveler-table th {
+            text-align: left;
+            color: #888;
+            padding: 10px 0;
+            font-weight: 600;
+        }
+
+        .traveler-table td {
+            padding: 15px 0;
+            border-top: 1px solid #eee;
+        }
+
+        .badge {
+            background: #eef7fc;
+            color: #3498db;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+        }
+
+        /* --- Right Sidebar (Summary) --- */
+        .summary-box {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 20px;
+        }
+
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            color: #666;
+        }
+
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px dashed #eee;
+            font-weight: bold;
+            font-size: 1.3rem;
+            color: #2c3e50;
+        }
+
+        .pay-btn {
+            width: 100%;
+            background-color: #27ae60;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 25px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="page-header">
+        <div class="header-content">
+            <a href="index.html" class="brand brand-link">
+                <img src="../images/Logo.gif" alt="Towards Point Logo">
+                <span>Towards Point</span>
+            </a>
+            <div class="step-indicator">Step 2 of 3: Review & Pay</div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="main-content">
+            <div class="card">
+                <h2>Trip Details</h2>
+                <div style="display: flex; gap: 20px; align-items: center;">
+                    <div
+                        style="width: 150px; height: 120px; background: #3498db; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; overflow: hidden;">
+                        <img id="destination-image" alt="Destination Image"
+                            style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div>
+                        <h3 style="margin: 0 0 5px 0;" id="trip-destination">Group Expedition</h3>
+                        <p style="margin: 0; color: #888;"><span id="trip-people">0</span> Travelers | Meeting Point:
+                            <span id="trip-meeting">TBD</span></p>
+                        <p style="margin: 5px 0 0 0; color: #666; font-size: 0.9rem;">Boarding Type: <span
+                                id="trip-boarding">Same</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Booking Information</h2>
+                <div style="background: #f0f7ff; padding: 15px; border-radius: 8px; margin-bottom: 15px;">
+                    <p style="margin: 0 0 10px 0;"><strong>Destination:</strong> <span id="info-destination"
+                            style="color: #3498db;">-</span></p>
+                    <p style="margin: 0 0 10px 0;"><strong>Meeting Point:</strong> <span id="info-meeting"
+                            style="color: #3498db;">-</span></p>
+                    <p style="margin: 0 0 10px 0;"><strong>Number of Travelers:</strong> <span id="info-count"
+                            style="color: #3498db;">-</span></p>
+                    <p style="margin: 0;"><strong>Boarding Type:</strong> <span id="info-type"
+                            style="color: #3498db;">-</span></p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Traveler Manifest</h2>
+                <table class="traveler-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Phone</th>
+                            <th>Boarding Point</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <div class="summary-box">
+                <h2>Booking Summary</h2>
+
+                <div class="price-row">
+                    <span id="label-package-cost">Package Cost (x1)</span>
+                    <span id="val-package-cost">₹0</span>
+                </div>
+                <div class="price-row">
+                    <span>GST (18%)</span>
+                    <span id="val-gst">₹0</span>
+                </div>
+                <div class="price-row">
+                    <span>Group Discount</span>
+                    <span id="val-discount" style="color: #27ae60;">- ₹0</span>
+                </div>
+
+                <div class="total-row">
+                    <span>Total</span>
+                    <span id="val-total">₹0</span>
+                </div>
+
+                <button class="pay-btn" onclick="processPayment()">Confirm & Pay</button>
+                <button
+                    style="width: 100%; padding: 12px; margin-top: 10px; background: #64748b; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600;"
+                    onclick="window.location.href='group-travel-coordination.html'">← Back to Edit</button>
+            </div>
+        </div>
+    </div>
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-col branding">
+                <h3><span class="brand-mark">TP</span> Towards Point</h3>
+                <p>Your ultimate travel partner. Find the best deals on flights, trains, hotels, and holiday packages.
+                    Explore the world with us securely and effortlessly.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><span class="social-text-icon">f</span></a>
+                    <a href="#" aria-label="Twitter"><span class="social-text-icon">X</span></a>
+                    <a href="#" aria-label="Instagram"><span class="social-text-icon">I</span></a>
+                    <a href="#" aria-label="LinkedIn"><span class="social-text-icon">in</span></a>
+                </div>
+            </div>
+
+            <div class="footer-col links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#flights">Book Flights</a></li>
+                    <li><a href="index.html#trains">Book Trains</a></li>
+                    <li><a href="index.html#hotels">Find Hotels</a></li>
+                    <li><a href="index.html#packages">Holiday Packages</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col contact">
+                <h4>Contact Us</h4>
+                <p><i class="fas fa-map-marker-alt"></i> Towards Point HQ, Bhayandar</p>
+                <p><i class="fas fa-phone-alt"></i> +91 98765 43210</p>
+                <p><i class="fas fa-envelope"></i> support@towardspoint.com</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Towards Point. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of
+                    Service</a></p>
+        </div>
+    </footer>
+
+    <script>
+        const destinationImages = {
+            "delhi": "https://images.unsplash.com/photo-1587474260584-136574528ed5?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            "mumbai": "https://images.unsplash.com/photo-1570168007204-dfb528c6958f?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            "bangalore": "https://lh3.googleusercontent.com/gpms-cs-s/AFfmt2YYKuazXKwkM2JmsEUVu-b-k0Db6bSTVmccf1bpzuwbFD_52wMf7H4TSxodL3u5deFUDBicT9ugZbOnN1zQgUPMOjYN5myg-0cvvQEkc41She25ldyEEyT0yx653jeRJwk1PliF=s1360-w1360-h1020-rw",
+            "hyderabad": "https://images.unsplash.com/photo-1741545979534-02f59c742730?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            "pune": "https://images.unsplash.com/photo-1760034588108-987757454c18?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            "goa": "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            "jaipur": "https://images.unsplash.com/photo-1695395550316-8995ae9d35ff?q=80&w=1156&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            "agra": "https://images.unsplash.com/photo-1564507592333-c60657eea523?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            "kolkata": "https://images.unsplash.com/photo-1638273349088-eec0b06c1765?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            "chennai": "https://images.unsplash.com/photo-1724992609079-75164f1ba2dd?q=80&w=1244&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            "kochi": "https://images.unsplash.com/photo-1605955794720-651b9ae7f5e7?q=80&w=1330&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            "lucknow": "https://plus.unsplash.com/premium_photo-1697730410005-1d916de26345?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            "chandigarh": "https://images.unsplash.com/photo-1588669494151-f4c6df6f715b?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            "bhopal": "https://images.unsplash.com/photo-1649055729176-a304b6b512ca?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            "indore": "https://plus.unsplash.com/premium_photo-1697729434815-40ab4970ebc1?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            "paris": "https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            "london": "https://plus.unsplash.com/premium_photo-1661922394754-5d8d05a448cf?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            "tokyo": "https://plus.unsplash.com/premium_photo-1661902398022-762e88ff3f82?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            "bangkok": "https://images.unsplash.com/photo-1703508202823-9b3648ca4f18?q=80&w=1182&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            "dubai": "https://plus.unsplash.com/premium_photo-1694475634077-e6e4b623b574?q=80&w=1071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            "singapore": "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?q=80&w=1052&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            "new-york": "https://images.unsplash.com/photo-1582760548598-0bccdf815aa2?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            "bali": "https://images.unsplash.com/photo-1711609110590-5ad5c4599e56?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        };
+
+        function formatPlaceName(value) {
+            return (value || "")
+                .split("-")
+                .map(part => part ? part.charAt(0).toUpperCase() + part.slice(1) : "")
+                .join(" ");
+        }
+
+        function createDestinationPlaceholder(destination) {
+            const label = formatPlaceName(destination || "Destination");
+            const svg = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400">
+                    <defs>
+                        <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#0f172a"/>
+                            <stop offset="55%" stop-color="#1d4ed8"/>
+                            <stop offset="100%" stop-color="#38bdf8"/>
+                        </linearGradient>
+                    </defs>
+                    <rect width="600" height="400" fill="url(#bg)"/>
+                    <circle cx="515" cy="80" r="58" fill="rgba(255,255,255,0.15)"/>
+                    <circle cx="85" cy="318" r="78" fill="rgba(255,255,255,0.12)"/>
+                    <text x="50%" y="44%" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="700" fill="#ffffff">${label}</text>
+                    <text x="50%" y="57%" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="18" fill="rgba(255,255,255,0.86)">Group Travel Destination</text>
+                </svg>`;
+
+            return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
+        }
+
+        function setDestinationImage(destination) {
+            const key = (destination || "").toLowerCase().trim();
+            const image = document.getElementById("destination-image");
+            const fallbackImage = createDestinationPlaceholder(key || "Destination");
+            const mappedImage = destinationImages[key];
+
+            image.onerror = function () {
+                image.onerror = null;
+                image.src = fallbackImage;
+            };
+
+            image.src = mappedImage || fallbackImage;
+        }
+
+        window.onload = function () {
+            const storedData = localStorage.getItem("travelHavenBooking");
+
+            if (!storedData) {
+                console.log("No booking data found. Please start from the home page.");
+                alert("No booking data found. Redirecting to booking page...");
+                window.location.href = "group-travel-coordination.html";
+                return;
+            }
+
+            const data = JSON.parse(storedData);
+            const count = parseInt(data.count, 10) || 0;
+            const destination = data.destination || "destination";
+            const meetingPoint = data.meetingPoint || "to-be-determined";
+            const boardingType = data.type === "different" ? "Different Boarding Points" : "Same Boarding Point";
+            const formattedDestination = formatPlaceName(destination);
+            const formattedMeetingPoint = formatPlaceName(meetingPoint);
+
+            setDestinationImage(destination);
+
+            document.getElementById("trip-destination").innerText = `${formattedDestination} Group Tour`;
+            document.getElementById("trip-people").innerText = count;
+            document.getElementById("trip-meeting").innerText = formattedMeetingPoint;
+            document.getElementById("trip-boarding").innerText = boardingType;
+            document.getElementById("info-destination").innerText = formattedDestination;
+            document.getElementById("info-meeting").innerText = formattedMeetingPoint;
+            document.getElementById("info-count").innerText = `${count} travelers`;
+            document.getElementById("info-type").innerText = boardingType;
+
+            const tableBody = document.querySelector(".traveler-table tbody");
+            tableBody.innerHTML = "";
+
+            data.travelers.forEach((person) => {
+                tableBody.innerHTML += `
+                    <tr>
+                        <td>${person.name}</td>
+                        <td>${person.phone}</td>
+                        <td><span class="badge">${person.location}</span></td>
+                    </tr>`;
+            });
+
+            const pricePerPerson = 5000;
+            const subTotal = count * pricePerPerson;
+            const gstAmount = subTotal * 0.18;
+            const discount = count > 3 ? count * 200 : 0;
+            const finalTotal = subTotal + gstAmount - discount;
+
+            document.getElementById("label-package-cost").innerText = `Package Cost (x${count})`;
+            document.getElementById("val-package-cost").innerText = "\u20B9" + subTotal.toLocaleString("en-IN");
+            document.getElementById("val-gst").innerText = "\u20B9" + Math.round(gstAmount).toLocaleString("en-IN");
+            document.getElementById("val-discount").innerText = "- \u20B9" + discount.toLocaleString("en-IN");
+            document.getElementById("val-total").innerText = "\u20B9" + Math.round(finalTotal).toLocaleString("en-IN");
+        };
+
+        function processPayment() {
+            const btn = document.querySelector(".pay-btn");
+            btn.innerText = "Processing Payment...";
+            btn.style.backgroundColor = "#95a5a6";
+            btn.disabled = true;
+
+            setTimeout(function () {
+                window.location.href = "success.html";
+            }, 2000);
+        }
+    </script>
+
+</body>
+
+</html>

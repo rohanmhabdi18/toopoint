@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>    <link rel='icon' type='image/gif' href='../images/Logo.gif'>
+
+    <link rel='icon' type='image/gif' href='../images/Logo.gif'>
+
+    <link rel='icon' type='image/gif' href='../images/Logo.gif'>
+     <link rel='icon' type='image/gif' href='../images/Logo.gif'>
+     <link rel='icon' type='image/gif' href='../images/Logo.gif'>
+     <link rel='icon' type='image/gif' href='../images/Logo.gif'>
+     <link rel='icon' type='image/gif' href='../images/Logo.gif'>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Travel Assistant - Towards Point</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* =========================================
+           FOOTER CSS
+           ========================================= */
+        .site-footer {
+            background: #1e293b; /* Deep slate blue */
+            color: #f8fafc;
+            padding: 60px 20px 20px;
+            margin-top: 60px;
+            border-top: 4px solid #3498db; /* Blue accent line */
+            font-family: 'Segoe UI', sans-serif;
+            position: relative;
+            z-index: 10;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: space-between;
+        }
+
+        .footer-col {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-col h3 {
+            font-size: 1.6rem;
+            color: #ffffff;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-col h4 {
+            font-size: 1.2rem;
+            color: #ffffff;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 3px;
+            background: #3498db;
+            border-radius: 2px;
+        }
+
+        .footer-col p {
+            color: #cbd5e1;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+
+        .footer-col.contact p i {
+            color: #3498db;
+            width: 25px;
+            font-size: 1.1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .social-links a:hover {
+            background: #3498db;
+            transform: translateY(-4px);
+        }
+
+        .footer-col.links ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-col.links ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col.links ul li a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-col.links ul li a::before {
+            content: '\f105'; /* FontAwesome right arrow */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            font-size: 0.8rem;
+            color: #3498db;
+            transition: 0.3s;
+        }
+
+        .footer-col.links ul li a:hover {
+            color: #3498db;
+            padding-left: 6px;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 40px auto 0;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        .footer-bottom a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .footer-bottom a:hover {
+            color: #3498db;
+        }
+        :root {
+            --primary-color: #233356;
+            --secondary-color: #1e40af;
+            --accent-color: #f59e0b;
+            --chat-bg: #f8fafc;
+            --sidebar-width: 280px;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--chat-bg);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden; /* Prevent body scroll */
+        }
+
+        /* --- Navbar (Fixed at top) --- */
+        .navbar {
+            background: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            z-index: 1000;
+            height: 70px;
+        }
+
+        /* --- Main Layout --- */
+        .main-container {
+            display: flex;
+            height: calc(100vh - 70px); /* Full height minus navbar */
+            width: 100%;
+        }
+
+        /* --- Sidebar --- */
+        .sidebar {
+            width: var(--sidebar-width);
+            background: white;
+            border-right: 1px solid #e2e8f0;
+            display: flex;
+            flex-direction: column;
+            padding: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .new-chat-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-bottom: 20px;
+        }
+
+        .new-chat-btn:hover {
+            background: var(--secondary-color);
+        }
+
+        .history-list {
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        .history-item {
+            padding: 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            color: #4b5563;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 5px;
+            transition: 0.2s;
+        }
+
+        .history-item:hover {
+            background: #f1f5f9;
+            color: var(--primary-color);
+        }
+
+        .history-item i {
+            font-size: 0.8rem;
+        }
+
+        /* --- Chat Area --- */
+        .chat-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            background: var(--chat-bg);
+        }
+
+        .messages-container {
+            flex: 1;
+            padding: 2rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .welcome-screen {
+            text-align: center;
+            margin-top: 10vh;
+            color: #64748b;
+        }
+
+        .welcome-icon {
+            font-size: 4rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .suggestion-chips {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .chip {
+            background: white;
+            border: 1px solid #e2e8f0;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: 0.2s;
+            color: var(--primary-color);
+        }
+
+        .chip:hover {
+            background: #e0f2fe;
+            border-color: #bae6fd;
+        }
+
+        /* --- Message Bubbles --- */
+        .message {
+            display: flex;
+            gap: 15px;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .bot-avatar {
+            background: var(--secondary-color);
+            color: white;
+        }
+
+        .user-avatar {
+            background: #e2e8f0;
+            color: #64748b;
+        }
+
+        .message-content {
+            background: white;
+            padding: 15px 20px;
+            border-radius: 12px;
+            border-top-left-radius: 2px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            max-width: 80%;
+            line-height: 1.6;
+            color: #334155;
+        }
+
+        .user-message {
+            flex-direction: row-reverse;
+        }
+
+        .user-message .message-content {
+            background: var(--primary-color);
+            color: white;
+            border-top-left-radius: 12px;
+            border-top-right-radius: 2px;
+        }
+
+        /* --- Input Area --- */
+        .input-container {
+            background: white;
+            padding: 20px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .input-box-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .chat-input {
+            width: 100%;
+            padding: 15px 50px 15px 20px;
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            outline: none;
+            resize: none;
+            height: 54px;
+            font-family: inherit;
+            transition: border-color 0.2s;
+        }
+
+        .chat-input:focus {
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);
+        }
+
+        .send-btn {
+            position: absolute;
+            right: 10px;
+            background: none;
+            border: none;
+            color: var(--secondary-color);
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 8px;
+            transition: 0.2s;
+        }
+
+        .send-btn:hover {
+            transform: scale(1.1);
+            color: var(--primary-color);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .sidebar {
+                position: fixed;
+                left: -280px;
+                height: 100%;
+                z-index: 1001;
+            }
+            .sidebar.active {
+                left: 0;
+            }
+            .sidebar-overlay {
+                display: none;
+                position: fixed;
+                top: 0; left: 0; right: 0; bottom: 0;
+                background: rgba(0,0,0,0.5);
+                z-index: 1000;
+            }
+            .sidebar-overlay.active {
+                display: block;
+            }
+            .mobile-menu-btn {
+                display: block !important;
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid px-4">
+            <button class="btn border-0 me-3 mobile-menu-btn" style="display: none;" onclick="toggleSidebar()">
+                <i class="fas fa-bars"></i>
+            </button>
+            <a class="navbar-brand fw-bold logo" href="index.html" style="color: #233356;">
+    <img src="../images/Logo.gif" alt="Logo" style="height:32px; margin-right:10px; vertical-align:middle;"> Towards Point
+</a>
+            </a>
+            <div class="ms-auto">
+                <a href="index.html" class="btn btn-outline-secondary btn-sm me-2">Back to Home</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-container">
+        <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+        <aside class="sidebar" id="sidebar">
+            <button class="new-chat-btn" onclick="clearChat()">
+                <i class="fas fa-plus"></i> New Chat
+            </button>
+            
+            <div class="text-muted small fw-bold mb-2 px-2">RECENT HISTORY</div>
+            <div class="history-list">
+                <div class="history-item">
+                    <i class="far fa-comment-alt"></i> Trip to Paris
+                </div>
+                <div class="history-item">
+                    <i class="far fa-comment-alt"></i> Cheap flights
+                </div>
+                <div class="history-item">
+                    <i class="far fa-comment-alt"></i> Visa requirements
+                </div>
+                <div class="history-item">
+                    <i class="far fa-comment-alt"></i> Hotel booking help
+                </div>
+            </div>
+
+            <div class="mt-auto pt-3 border-top">
+                <div class="d-flex align-items-center gap-2 px-2">
+                    <div class="avatar user-avatar" style="width: 32px; height: 32px; font-size: 0.8rem;">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="small fw-bold">User Account</div>
+                </div>
+            </div>
+        </aside>
+
+        <main class="chat-area">
+            <div class="messages-container" id="messagesContainer">
+                <div class="welcome-screen" id="welcomeScreen">
+                    <div class="welcome-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h2>How can I help plan your trip?</h2>
+                    <p>Ask me about destinations, flights, or travel tips.</p>
+                    
+                    <div class="suggestion-chips">
+                        <div class="chip" onclick="useChip('Find cheap flights to Goa')">Find cheap flights to Goa</div>
+                        <div class="chip" onclick="useChip('Best time to visit Dubai')">Best time to visit Dubai</div>
+                        <div class="chip" onclick="useChip('Suggest a honeymoon destination')">Suggest a honeymoon destination</div>
+                        <div class="chip" onclick="useChip('How do I cancel my booking?')">How do I cancel my booking?</div>
+                    </div>
+                </div>
+                </div>
+
+            <div class="input-container">
+                <div class="input-box-wrapper">
+                    <input type="text" id="chatInput" class="chat-input" placeholder="Type your message here..." onkeypress="handleEnter(event)">
+                    <button class="send-btn" onclick="sendMessage()">
+                        <img src="../images/Logo.gif" alt="Send" style="height: 20px; width: auto;">
+                    </button>
+                </div>
+                <div class="text-center text-muted mt-2" style="font-size: 0.75rem;">
+                    AI can make mistakes. Please verify important travel details.
+                </div>
+            </div>
+        </main>
+    </div>
+<footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-col branding">
+                <h3><i class="fas fa-compass"></i> Towards Point</h3>
+                <p>Your ultimate travel partner. Find the best deals on flights, trains, hotels, and holiday packages. Explore the world with us securely and effortlessly.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#flights">Book Flights</a></li>
+                    <li><a href="index.html#trains">Book Trains</a></li>
+                    <li><a href="index.html#hotels">Find Hotels</a></li>
+                    <li><a href="index.html#packages">Holiday Packages</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col contact">
+                <h4>Contact Us</h4>
+                <p><i class="fas fa-map-marker-alt"></i> Towards Point HQ, Bhayandar</p>
+                <p><i class="fas fa-phone-alt"></i> +91 98765 43210</p>
+                <p><i class="fas fa-envelope"></i> support@towardspoint.com</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Towards Point. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+        </div>
+    </footer>
+    <script>
+        const messagesContainer = document.getElementById('messagesContainer');
+        const welcomeScreen = document.getElementById('welcomeScreen');
+        const chatInput = document.getElementById('chatInput');
+        let isFirstMessage = true;
+
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('active');
+            document.querySelector('.sidebar-overlay').classList.toggle('active');
+        }
+
+        function handleEnter(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+
+        function useChip(text) {
+            chatInput.value = text;
+            sendMessage();
+        }
+
+        function sendMessage() {
+            const text = chatInput.value.trim();
+            if (text === "") return;
+
+            // Remove welcome screen on first message
+            if (isFirstMessage) {
+                welcomeScreen.style.display = 'none';
+                isFirstMessage = false;
+            }
+
+            // Add User Message
+            addMessage(text, 'user');
+            chatInput.value = '';
+
+            // Loading indicator
+            const loadingId = addLoadingIndicator();
+
+            // Simulate AI Response delay
+            setTimeout(() => {
+                removeLoadingIndicator(loadingId);
+                const botResponse = getBotResponse(text);
+                addMessage(botResponse, 'bot');
+            }, 1000);
+        }
+
+        function addMessage(text, sender) {
+            const div = document.createElement('div');
+            div.className = `message ${sender === 'user' ? 'user-message' : ''}`;
+            
+            const avatarIcon = sender === 'user' ? 'fa-user' : 'fa-robot';
+            const avatarClass = sender === 'user' ? 'user-avatar' : 'bot-avatar';
+
+            div.innerHTML = `
+                <div class="avatar ${avatarClass}">
+                    <i class="fas ${avatarIcon}"></i>
+                </div>
+                <div class="message-content">
+                    ${text}
+                </div>
+            `;
+            
+            messagesContainer.appendChild(div);
+            scrollToBottom();
+        }
+
+        function addLoadingIndicator() {
+            const id = 'loading-' + Date.now();
+            const div = document.createElement('div');
+            div.className = 'message';
+            div.id = id;
+            div.innerHTML = `
+                <div class="avatar bot-avatar">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="message-content">
+                    <i class="fas fa-circle-notch fa-spin"></i> Thinking...
+                </div>
+            `;
+            messagesContainer.appendChild(div);
+            scrollToBottom();
+            return id;
+        }
+
+        function removeLoadingIndicator(id) {
+            const el = document.getElementById(id);
+            if (el) el.remove();
+        }
+
+        function scrollToBottom() {
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function clearChat() {
+            messagesContainer.innerHTML = '';
+            messagesContainer.appendChild(welcomeScreen);
+            welcomeScreen.style.display = 'block';
+            isFirstMessage = true;
+            chatInput.value = '';
+        }
+
+        // AI Logic (Simple keyword matching)
+        function getBotResponse(input) {
+            input = input.toLowerCase();
+
+            if (input.includes('hello') || input.includes('hi')) {
+                return "Hello! I'm your Travel Heaven assistant. Where would you like to go today?";
+            }
+            if (input.includes('flight') || input.includes('fly')) {
+                return "I can help with flights! We have special offers for: <br>• <b>Paris</b> from $450 <br>• <b>London</b> from $550 <br>• <b>Tokyo</b> from $600 <br>Check the 'Flights' tab on the homepage to book.";
+            }
+            if (input.includes('hotel') || input.includes('stay')) {
+                return "Looking for a place to stay? We partner with 5-star hotels in Mumbai, Dubai, and New York. What is your budget per night?";
+            }
+            if (input.includes('cancel') || input.includes('refund')) {
+                return "To cancel a booking, please go to your account settings or click the 'Login' button on the homepage. Refund policies depend on the airline.";
+            }
+            if (input.includes('suggestion') || input.includes('recommend')) {
+                return "Based on popular trends, I recommend visiting <b>Bali</b> for relaxation or <b>Tokyo</b> for a city adventure. You can view more on our <a href='suggestion.html'>Suggestions Page</a>.";
+            }
+            if (input.includes('contact') || input.includes('support')) {
+                return "You can reach our human support team at <b>+91 98765 43210</b> or visit our <a href='contact.html'>Contact Page</a>.";
+            }
+            
+            return "I'm not sure about that. Try asking about 'flights', 'hotels', 'cancellations', or 'destinations'.";
+        }
+    </script>
+</body>
+</html>

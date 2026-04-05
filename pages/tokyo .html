@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>    <link rel='icon' type='image/gif' href='../images/Logo.gif'>
+
+    <link rel='icon' type='image/gif' href='../images/Logo.gif'>
+
+    <link rel='icon' type='image/gif' href='../images/Logo.gif'>
+     <link rel='icon' type='image/gif' href='../images/Logo.gif'>
+     <link rel='icon' type='image/gif' href='../images/Logo.gif'>
+     <link rel='icon' type='image/gif' href='../images/Logo.gif'>
+     <link rel='icon' type='image/gif' href='../images/Logo.gif'>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tokyo Details - Towards Point</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* =========================================
+           FOOTER CSS
+           ========================================= */
+        .site-footer {
+            background: #1e293b; /* Deep slate blue */
+            color: #f8fafc;
+            padding: 60px 20px 20px;
+            margin-top: 60px;
+            border-top: 4px solid #3498db; /* Blue accent line */
+            font-family: 'Segoe UI', sans-serif;
+            position: relative;
+            z-index: 10;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: space-between;
+        }
+
+        .footer-col {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-col h3 {
+            font-size: 1.6rem;
+            color: #ffffff;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-col h4 {
+            font-size: 1.2rem;
+            color: #ffffff;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 3px;
+            background: #3498db;
+            border-radius: 2px;
+        }
+
+        .footer-col p {
+            color: #cbd5e1;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+
+        .footer-col.contact p i {
+            color: #3498db;
+            width: 25px;
+            font-size: 1.1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .social-links a:hover {
+            background: #3498db;
+            transform: translateY(-4px);
+        }
+
+        .footer-col.links ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-col.links ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col.links ul li a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-col.links ul li a::before {
+            content: '\f105'; /* FontAwesome right arrow */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            font-size: 0.8rem;
+            color: #3498db;
+            transition: 0.3s;
+        }
+
+        .footer-col.links ul li a:hover {
+            color: #3498db;
+            padding-left: 6px;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 40px auto 0;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        .footer-bottom a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .footer-bottom a:hover {
+            color: #3498db;
+        }
+        /* Base Styles matching Towards Point */
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; padding: 0; background: #f4f7f6; color: #333; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+        h1, h2, h3 { color: #233356; }
+        
+        /* Header */
+        .page-header { text-align: center; margin-bottom: 40px; }
+        .page-header h1 { font-size: 2.5rem; margin-bottom: 10px; }
+        .back-link { color: #3498db; text-decoration: none; font-weight: bold; font-size: 1.1rem; display: inline-block; margin-bottom: 20px; }
+        .back-link:hover { text-decoration: underline; }
+
+        /* Image Grid (Best Places) */
+        .places-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .place-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .place-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s;
+        }
+        .place-item:hover img { transform: scale(1.05); }
+        .place-label {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            padding: 15px;
+            font-weight: bold;
+        }
+
+        /* Info Sections (Time & Transport) */
+        .info-panel {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            border-left: 5px solid #3498db;
+        }
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .info-box h3 { margin-top: 0; font-size: 1.2rem; display: flex; align-items: center; gap: 10px; }
+        .info-list { list-style: none; padding: 0; margin: 0; }
+        .info-list li { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #eee; }
+        .info-list li:last-child { border-bottom: none; }
+
+        /* Quotation & Booking */
+        .quotation-panel {
+            background: #233356;
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+        }
+        .quotation-panel h2 { color: white; margin-top: 0; }
+        .total-price { font-size: 2.5rem; font-weight: bold; color: #4ade80; margin: 15px 0; }
+        .book-btn {
+            background: #4ade80;
+            color: #233356;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(74, 222, 128, 0.4);
+            margin-top: 20px;
+        }
+        .book-btn:hover { background: #38c172; transform: translateY(-2px); }
+
+        @media (max-width: 768px) {
+            .info-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="page-header">
+        <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Homepage</a>
+        <h1>Discover Tokyo</h1>
+        <p>Dive into a world where neon-lit skyscrapers meet historic temples and shrines.</p>
+    </div>
+
+    <h2><i class="fas fa-camera-retro"></i> Best Places to Visit</h2>
+    <div class="places-grid">
+        <div class="place-item">
+            <img src="https://images.unsplash.com/photo-1532274804934-6572ef1581e9?q=80&w=1199&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Shibuya Crossing">
+            <div class="place-label">Shibuya Crossing</div>
+        </div>
+        <div class="place-item">
+            <img src="https://plus.unsplash.com/premium_photo-1661882926003-91a51e3dfe64?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Mount Fuji">
+            <div class="place-label">Mount Fuji (Day Trip)</div>
+        </div>
+        <div class="place-item">
+            <img src="https://images.unsplash.com/photo-1563021555-6460d86d7a4d?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Senso-ji Temple">
+            <div class="place-label">Senso-ji Temple</div>
+        </div>
+        <div class="place-item">
+            <img src="https://plus.unsplash.com/premium_photo-1661914240950-b0124f20a5c1?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Tokyo Tower">
+            <div class="place-label">Tokyo Tower</div>
+        </div>
+    </div>
+
+    <div class="info-panel">
+        <div class="info-grid">
+            <div class="info-box">
+                <h3><i class="fas fa-clock"></i> Trip Duration</h3>
+                <p><strong>Total Time Required:</strong> 7 Days, 6 Nights</p>
+                <p><em>Best time to visit:</em> March to May (Cherry Blossoms) or September to November.</p>
+            </div>
+            
+            <div class="info-box">
+                <h3><i class="fas fa-plane"></i> Transport & Costs (Round Trip)</h3>
+                <ul class="info-list">
+                    <li><span>Flight (Mumbai to Tokyo)</span> <span>₹40,000</span></li>
+                    <li><span>Narita Airport Express</span> <span>₹2,000</span></li>
+                    <li><span>JR Pass (7 Days)</span> <span>₹18,000</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="quotation-panel">
+        <h2>Complete Trip Quotation</h2>
+        <p>Includes flights, 3-star hotel stay, nationwide bullet train pass, and city tours.</p>
+        
+        <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 8px; max-width: 400px; margin: 20px auto; text-align: left;">
+            <ul class="info-list" style="color: white;">
+                <li><span>Flights & Transport</span> <span>₹60,000</span></li>
+                <li><span>Accommodation (6 Nights)</span> <span>₹30,000</span></li>
+                <li><span>Sightseeing & Activities</span> <span>₹10,000</span></li>
+                <li><span>Food & Misc Allowance</span> <span>₹18,000</span></li>
+            </ul>
+        </div>
+
+        <div class="total-price">Total: ₹1,18,000 / person</div>
+        
+        <button class="book-btn" onclick="openMemberModal()">
+            <i class="fas fa-suitcase-rolling"></i> Book This Trip Now
+        </button>
+    </div>
+</div>
+<div class="modal-overlay" id="member-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 1000; justify-content: center; align-items: center;">
+        <div style="background: white; padding: 30px; border-radius: 12px; width: 90%; max-width: 400px; text-align: center; position: relative;">
+            <span style="position: absolute; top: 10px; right: 15px; font-size: 24px; cursor: pointer;" onclick="document.getElementById('member-modal').style.display='none'">&times;</span>
+            <h3>How many people are traveling?</h3>
+            <input type="number" id="member-count" min="1" value="1" style="width: 100%; padding: 10px; margin: 15px 0; border: 1px solid #ccc; border-radius: 6px; font-size: 16px;">
+            <button onclick="openDetailsModal()" style="background: #3498db; color: white; padding: 10px 20px; border: none; border-radius: 6px; cursor: pointer; width: 100%; font-size: 16px;">Next Step</button>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="details-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 1000; justify-content: center; align-items: center;">
+        <div style="background: white; padding: 30px; border-radius: 12px; width: 90%; max-width: 600px; max-height: 80vh; overflow-y: auto; position: relative;">
+            <span style="position: absolute; top: 10px; right: 15px; font-size: 24px; cursor: pointer;" onclick="document.getElementById('details-modal').style.display='none'">&times;</span>
+            <h2 style="margin-top: 0;">Traveler Details</h2>
+            
+            <form id="traveler-form" onsubmit="proceedToPayment(event)">
+                <div style="background: #f8fbff; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                    <div style="margin-bottom: 10px;">
+                        <label><strong>Trip Start Date:</strong></label>
+                        <input type="date" id="trip-date" required style="width: 100%; padding: 8px; margin-top: 5px;">
+                    </div>
+                    <div>
+                        <label><strong>Boarding From (City/Airport):</strong></label>
+                        <input type="text" id="boarding-location" required placeholder="e.g., Mumbai" style="width: 100%; padding: 8px; margin-top: 5px;">
+                    </div>
+                </div>
+
+                <div id="dynamic-travelers-container"></div>
+
+                <div style="background: #fff3cd; color: #856404; padding: 10px; border-radius: 6px; margin: 20px 0; font-size: 0.9rem;">
+                    <strong><i class="fas fa-exclamation-triangle"></i> Disclaimer:</strong> Please ensure all travelers carry valid original ID documents (Aadhar, Passport) during the journey.
+                </div>
+
+                <button type="submit" style="background: #27ae60; color: white; padding: 12px 20px; border: none; border-radius: 6px; cursor: pointer; width: 100%; font-size: 16px; font-weight: bold;">Proceed to Payment</button>
+            </form>
+        </div>
+    </div>
+<footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-col branding">
+                <h3><i class="fas fa-compass"></i> Towards Point</h3>
+                <p>Your ultimate travel partner. Find the best deals on flights, trains, hotels, and holiday packages. Explore the world with us securely and effortlessly.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/towards_point/"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#flights">Book Flights</a></li>
+                    <li><a href="index.html#trains">Book Trains</a></li>
+                    <li><a href="index.html#hotels">Find Hotels</a></li>
+                    <li><a href="index.html#packages">Holiday Packages</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col contact">
+                <h4>Contact Us</h4>
+                <p><i class="fas fa-map-marker-alt"></i> Towards Point HQ, Bhayandar</p>
+                <p><i class="fas fa-phone-alt"></i> +91 98765 43210</p>
+                <p><i class="fas fa-envelope"></i> support@towardspoint.com</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Towards Point. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+        </div>
+    </footer>
+</body>
+<script>
+        // 1. Opens the first modal
+        function openMemberModal() {
+            document.getElementById('member-modal').style.display = 'flex';
+        }
+
+        // 2. Generates the dynamic form based on traveler count
+        function openDetailsModal() {
+            const count = document.getElementById('member-count').value;
+            if (count < 1) return alert("Please enter a valid number of members.");
+            
+            document.getElementById('member-modal').style.display = 'none';
+            document.getElementById('details-modal').style.display = 'flex';
+            
+            const container = document.getElementById('dynamic-travelers-container');
+            container.innerHTML = ''; // Clear previous fields
+            
+            for (let i = 1; i <= count; i++) {
+                container.innerHTML += `
+                    <div style="border: 1px solid #ddd; padding: 15px; border-radius: 8px; margin-bottom: 15px;">
+                        <h4 style="margin-top: 0; color: #233356;">Traveler ${i}</h4>
+                        <input type="text" id="name_${i}" placeholder="Full Name" required style="width: 100%; padding: 8px; margin-bottom: 10px; box-sizing: border-box;">
+                        
+                        <div style="display: flex; gap: 10px; margin-bottom: 10px;">
+                            <input type="number" id="age_${i}" placeholder="Age" required style="width: 50%; padding: 8px;">
+                            <select id="gender_${i}" required style="width: 50%; padding: 8px;">
+                                <option value="">Select Gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div style="display: flex; gap: 10px;">
+                            <input type="tel" id="contact_${i}" placeholder="Contact Number" required style="width: 50%; padding: 8px;">
+                            <input type="email" id="email_${i}" placeholder="Email Address" required style="width: 50%; padding: 8px;">
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        // 3. Saves data to local storage and redirects
+        function proceedToPayment(event) {
+            event.preventDefault();
+            
+            const count = document.getElementById('member-count').value;
+            const primaryName = document.getElementById('name_1').value; 
+            
+            // Save data for London specifically
+            const bookingData = {
+                destination: "London",
+                costPerPerson: 131500, // London cost
+                tripDays: 6, // London takes 6 days
+                memberCount: count,
+                primaryName: primaryName,
+                startDate: document.getElementById('trip-date').value,
+                boarding: document.getElementById('boarding-location').value
+            };
+            
+            localStorage.setItem('currentBooking', JSON.stringify(bookingData));
+            
+            // Redirect to the payment page
+            window.location.href = 'payment.html';
+        }
+    </script>
+</html>

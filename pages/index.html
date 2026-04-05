@@ -1,0 +1,1906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>    <link rel='icon' type='image/gif' href='../images/Logo.gif'>
+
+    <link rel='icon' type='image/gif' href='../images/Logo.gif'>
+
+    <link rel='icon' type='image/gif' href='../images/Logo.gif'>
+     <link rel='icon' type='image/gif' href='../images/Logo.gif'>
+     <link rel='icon' type='image/gif' href='../images/Logo.gif'>
+     <link rel='icon' type='image/gif' href='../images/Logo.gif'>
+     <link rel='icon' type='image/gif' href='../images/Logo.gif'>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Towards Point-Book Your Trip</title>
+    <link rel="stylesheet" href="../css/homestyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    
+    <style>
+        body {
+            background-image: url('../images/world.jpg.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        /* =========================================
+           FOOTER CSS
+           ========================================= */
+        .site-footer {
+            background: #1e293b; /* Deep slate blue */
+            color: #f8fafc;
+            padding: 60px 20px 20px;
+            margin-top: 60px;
+            border-top: 4px solid #3498db; /* Blue accent line */
+            font-family: 'Segoe UI', sans-serif;
+            position: relative;
+            z-index: 10;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: space-between;
+        }
+
+        .footer-col {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-col h3 {
+            font-size: 1.6rem;
+            color: #ffffff;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-col h4 {
+            font-size: 1.2rem;
+            color: #ffffff;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 3px;
+            background: #3498db;
+            border-radius: 2px;
+        }
+
+        .footer-col p {
+            color: #cbd5e1;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+
+        .footer-col.contact p i {
+            color: #3498db;
+            width: 25px;
+            font-size: 1.1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .social-links a:hover {
+            background: #3498db;
+            transform: translateY(-4px);
+        }
+
+        .footer-col.links ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-col.links ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col.links ul li a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-col.links ul li a::before {
+            content: '\f105'; /* FontAwesome right arrow */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            font-size: 0.8rem;
+            color: #3498db;
+            transition: 0.3s;
+        }
+
+        .footer-col.links ul li a:hover {
+            color: #3498db;
+            padding-left: 6px;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 40px auto 0;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        .footer-bottom a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .footer-bottom a:hover {
+            color: #3498db;
+        }
+        /* =========================================
+           ULTRA-REALISTIC APPLE iOS GLASS UI
+           ========================================= */
+        .booking-container {
+            /* 1. The signature Apple diagonal glossy reflection */
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.1)) !important;
+            
+            /* 2. High blur and boosted saturation for the true iOS look */
+            backdrop-filter: blur(40px) saturate(180%);
+            -webkit-backdrop-filter: blur(40px) saturate(180%); /* Safari support */
+            
+            /* 3. Apple's signature 3D light-catching edges */
+            border-top: 1px solid rgba(255, 255, 255, 0.8);
+            border-left: 1px solid rgba(255, 255, 255, 0.6);
+            border-right: 1px solid rgba(255, 255, 255, 0.3);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            
+            /* 4. Soft, ambient shadow to float it off the background */
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
+            
+            border-radius: 24px;
+            padding: 25px;
+            margin: 0 auto;
+            max-width: 900px;
+        }
+
+        .booking-form {
+            background: transparent !important;
+            box-shadow: none !important;
+            padding: 10px !important;
+        }
+
+        /* iOS Segmented Control style for tabs */
+        .booking-tabs {
+            background: rgba(255, 255, 255, 0.2) !important;
+            border-radius: 14px;
+            padding: 4px;
+            display: flex;
+            gap: 2px;
+            margin-bottom: 20px;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.05); /* Inner shadow */
+        }
+
+        .tab-btn {
+            background: transparent !important;
+            border: none !important;
+            border-radius: 10px;
+            color: #1c1c1e;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 10px 20px;
+        }
+
+        .tab-btn.active {
+            background: #ffffff !important;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.12), 0 1px 1px rgba(0,0,0,0.04);
+            color: #000000;
+            font-weight: 600;
+        }
+
+        /* iOS style Inputs & Dropdowns */
+        .input-group input, .input-group select {
+            background: rgba(255, 255, 255, 0.5) !important;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.4) !important;
+            border-radius: 12px;
+            padding: 12px 15px;
+            color: #1c1c1e;
+            font-weight: 500;
+            transition: 0.3s;
+            width: 100%;
+            box-sizing: border-box;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .input-group input:focus, .input-group select:focus {
+            background: rgba(255, 255, 255, 0.9) !important;
+            border-color: #007aff !important; /* Apple Blue */
+            box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.2) !important;
+            outline: none;
+        }
+        
+        /* Apple Blue Primary Button */
+        .search-btn {
+            background: #007aff !important; /* Authentic iOS Blue */
+            color: rgba(255, 255, 255, 0.904) !important;
+            border: none;
+            border-radius: 14px;
+            padding: 16px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: transform 0.15s ease, background 0.15s ease;
+            margin-top: 10px;
+            box-shadow: 0 4px 12px rgba(0, 122, 255, 0.3);
+        }
+
+        .search-btn:hover {
+            transform: scale(0.98); /* Apple's signature "squish" click effect */
+            background: #005bb5 !important;
+        }
+
+       /* =========================================
+           LOADING ANIMATION (PRELOADER) CSS
+           ========================================= */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.6); 
+            backdrop-filter: blur(10px); 
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 999999; 
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.8s ease-out; 
+        }
+
+        #preloader img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            margin-bottom: 20px;
+        }
+
+        .loading-text {
+            font-size: 1.2rem;
+            color: #1e3a8a;
+            font-weight: bold;
+            letter-spacing: 2px;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.4; }
+            50% { opacity: 1; }
+            100% { opacity: 0.4; }
+        }
+
+        /* --- CINEMATIC VIDEO PLAYER CSS --- */
+        .video-player-container {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            background: #000;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border: 2px solid #233356;
+        }
+
+        .video-scene {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+
+        .video-scene.active {
+            opacity: 1;
+            z-index: 2;
+        }
+
+        .video-scene img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: scale(1);
+        }
+
+        .video-scene.active img {
+            animation: cinematicZoom 5s linear forwards; 
+        }
+
+        @keyframes cinematicZoom {
+            0% { transform: scale(1) translate(0, 0); }
+            100% { transform: scale(1.15) translate(-1%, -1%); }
+        }
+
+        /* --- STORYBOOK OUTCOME CSS --- */
+        .story-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .story-scene {
+            background: #fff;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            border-left: 4px solid #233356;
+        }
+        .story-scene img {
+            width: 100%;
+            max-height: 250px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .story-caption {
+            margin-top: 12px;
+            font-style: italic;
+            color: #555;
+            font-size: 1.05rem;
+            font-family: 'Georgia', serif;
+        }
+
+        /* --- TRAVEL HUB TOOLS CSS --- */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .tool-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            border-top: 4px solid #3498db;
+        }
+
+        .tool-card h3 { color: #2c3e50; margin-bottom: 10px; font-size: 1.3rem; }
+        .tool-desc { color: #7f8c8d; font-size: 0.9rem; margin-bottom: 20px; line-height: 1.4; }
+
+        .action-btn {
+            background: #3498db; color: white; border: none; padding: 10px 15px;
+            border-radius: 6px; cursor: pointer; font-weight: bold; transition: 0.3s;
+        }
+        .action-btn:hover { background: #2980b9; }
+        .full-width { width: 100%; }
+
+        /* Budget Tracker */
+        .budget-app input { width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 6px; }
+        .expense-inputs { display: flex; gap: 10px; margin-bottom: 15px; }
+        .expense-inputs input { margin-bottom: 0; }
+        .budget-stats { background: #f8fbff; padding: 15px; border-radius: 8px; margin-bottom: 15px; }
+        .progress-bar { width: 100%; height: 10px; background: #e0e0e0; border-radius: 5px; overflow: hidden; margin-top: 10px; }
+        #budget-progress { height: 100%; background: #27ae60; width: 0%; transition: width 0.4s; }
+        #expense-list { list-style: none; padding: 0; margin: 0; max-height: 120px; overflow-y: auto; }
+        #expense-list li { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #eee; font-size: 0.9rem; }
+
+        /* Storybook Saver */
+        .upload-btn {
+            display: block; text-align: center; padding: 15px; border: 2px dashed #3498db;
+            color: #3498db; border-radius: 8px; cursor: pointer; font-weight: bold; transition: 0.3s;
+        }
+        .upload-btn:hover { background: #f0f8ff; }
+        .gallery-preview { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 15px; }
+        .gallery-preview img { width: 60px; height: 60px; object-fit: cover; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+
+        /* Scheduled Updates (Toggle Switches) */
+        .toggle-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #eee; color: #34495e; font-weight: 500; }
+        .switch { position: relative; display: inline-block; width: 44px; height: 24px; }
+        .switch input { opacity: 0; width: 0; height: 0; }
+        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; }
+        .slider:before { position: absolute; content: ""; height: 18px; width: 18px; left: 3px; bottom: 3px; background-color: white; transition: .4s; }
+        input:checked + .slider { background-color: #27ae60; }
+        input:checked + .slider:before { transform: translateX(20px); }
+        .slider.round { border-radius: 24px; }
+        .slider.round:before { border-radius: 50%; }
+
+        /* --- NEW STYLES FOR GROUP BUTTONS & MODAL --- */
+        .travel-type-nav {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px; 
+        }
+
+        .nav-btn {
+            padding: 12px 50px;
+            border: 2px solid #3498db;
+            background: rgba(255, 255, 255, 0.9); 
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s;
+            color: #3498db;
+        }
+
+        .nav-btn:first-child { border-radius: 30px 0 0 30px; border-right: none; }
+        .nav-btn:last-child { border-radius: 0 30px 30px 0; border-left: none; }
+
+        .nav-btn.active {
+            background-color: #3498db;
+            color: white;
+            box-shadow: 0 4px 10px rgba(52, 152, 219, 0.3);
+        }
+
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(3px);
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 550px;
+            max-height: 85vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            color: #333; 
+            text-align: left;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px; right: 20px;
+            font-size: 28px;
+            cursor: pointer;
+            color: #888;
+        }
+
+        .modal-content h2 { text-align: center; color: #2c3e50; margin-bottom: 20px; }
+
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: 600; font-size: 0.9rem; color: #555; }
+        
+        .form-group input {
+            width: 100%; padding: 10px;
+            border: 1px solid #ccc; border-radius: 6px;
+            box-sizing: border-box;
+        }
+
+        .radio-group {
+            display: flex; gap: 20px;
+            background: #f9f9f9; padding: 10px;
+            border-radius: 6px;
+        }
+        
+        .radio-group label { color: #333; cursor: pointer; }
+
+        #dynamic-boarding-fields { margin-top: 15px; display: none; }
+
+        .traveler-card {
+            background: #f8fbff;
+            border: 1px solid #dbeafe;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .traveler-card h4 {
+            margin: 0 0 10px 0;
+            color: #2980b9;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            border-bottom: 1px solid #e1e1e1;
+            padding-bottom: 5px;
+        }
+
+        .traveler-row { display: flex; gap: 10px; margin-bottom: 10px; }
+        .traveler-row input { flex: 1; }
+
+        .submit-btn {
+            width: 100%; padding: 12px;
+            background-color: #27ae60; color: white;
+            border: none; border-radius: 6px;
+            font-size: 16px; font-weight: bold;
+            cursor: pointer; margin-top: 10px;
+        }
+
+        .user-profile-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(255,255,255,0.2); padding: 8px 12px;
+            border-radius: 999px; color: #233356; font-weight: bold;
+            max-width: 260px; white-space: nowrap;
+        }
+        .user-profile-badge a {
+            text-decoration:none; color:inherit; display:flex; align-items:center; gap:8px;
+            min-width: 0;
+        }
+        .user-profile-badge span {
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .logout-btn {
+            background: #e74c3c; color: white; border: none;
+            padding: 6px 10px; border-radius: 999px; cursor: pointer;
+            font-size: 0.8rem; margin-left: 0; transition: 0.2s;
+        }
+        .logout-btn:hover { background: #c0392b; }
+
+        /* Existing Widget CSS */
+        #travel-chat-widget { position: fixed; bottom: 30px; right: 30px; z-index: 9999; font-family: 'Segoe UI', sans-serif; }
+        #chat-toggle-btn { background: #233356; color: white; width: 65px; height: 65px; border-radius: 50%; border: none; box-shadow: 0 4px 15px rgba(0,0,0,0.3); cursor: pointer; font-size: 28px; display: flex; align-items: center; justify-content: center; }
+        #chat-toggle-btn:hover { transform: scale(1.1); background: #1e40af; }
+        .notification-dot { position: absolute; top: 0; right: 0; width: 15px; height: 15px; background: #f59e0b; border-radius: 50%; border: 2px solid white; }
+        .chat-window { display: none; position: absolute; bottom: 80px; right: 0; width: 380px; height: 500px; background: white; border-radius: 20px; box-shadow: 0 5px 30px rgba(0,0,0,0.2); overflow: hidden; flex-direction: column; animation: slideUp 0.3s ease; }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .logo img { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; }
+        .chat-header { background: linear-gradient(135deg, #233356, #1e40af); color: white; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; }
+        .header-info { display: flex; align-items: center; gap: 12px; }
+        .header-info h4 { margin: 0; font-size: 16px; font-weight: 600; }
+        .status { font-size: 12px; opacity: 0.8; display: flex; align-items: center; gap: 5px; }
+        .status::before { content: ''; display: block; width: 8px; height: 8px; background: #4ade80; border-radius: 50%; }
+        .close-btn { background: none; border: none; color: white; font-size: 24px; cursor: pointer; opacity: 0.8; }
+        .chat-messages { flex: 1; padding: 20px; overflow-y: auto; background: #f8fafc; display: flex; flex-direction: column; gap: 15px; }
+        .message { max-width: 85%; padding: 12px 16px; border-radius: 15px; font-size: 14px; line-height: 1.5; position: relative; word-wrap: break-word; }
+        .bot-message { background: white; color: #334155; border-bottom-left-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); align-self: flex-start; }
+        .user-message { background: #233356; color: white; border-bottom-right-radius: 5px; align-self: flex-end; }
+        .chat-input-area { padding: 15px; background: white; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; align-items: center; }
+        .chat-input-area input { flex: 1; border: 1px solid #e2e8f0; border-radius: 25px; padding: 12px 20px; outline: none; font-size: 14px; }
+        .chat-input-area button { background: #233356; color: white; border: none; width: 45px; height: 45px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+        .powered-by { font-size: 10px; text-align: center; color: #cbd5e1; padding-bottom: 5px; background: white; }
+        @media (max-width: 480px) { .chat-window { width: 100%; height: 100%; bottom: 0; right: 0; border-radius: 0; } #travel-chat-widget { bottom: 20px; right: 20px; } }
+    </style>
+</head>
+<body>
+    <div id="preloader">
+        <img src="../images/Logo.gif" alt="Loading Towards Point...">
+        <div class="loading-text">LOADING...</div>
+    </div>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <h2><a href="index.html" class="logo"><img src="../images/Logo.gif" alt="Logo" style="height:52px; margin-right:5px; vertical-align:middle;"></a>Towards Point</h2>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#" onclick="showTab('flights'); return false;">Flights</a></li>
+                <li><a href="#" onclick="showTab('hotels'); return false;">Hotels</a></li>
+                <li><a href="suggestion on home page.html">Suggestions</a></li>
+                <li><a href="pagecontact.html">Contact</a></li>
+<li><a href="dashboard.html" onclick="if(!window.isUserLoggedIn) { showLogin(); return false; }">Dashboard</a></li>            </ul>
+            <div class="login-btn" id="auth-container">
+                <button onclick="showSignup()">Sign Up</button>
+                <button onclick="showLogin()">Login</button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            
+            <div class="travel-type-nav">
+                <button class="nav-btn active" id="btn-single" onclick="selectType('single')">Single</button>
+                <button class="nav-btn" id="btn-group" onclick="selectType('group')">Group</button>
+            </div>
+            <h1>Where do you want to go?</h1>
+            <p>Find the best deals on flights, hotels, and vacation packages</p>
+
+            <div class="booking-container">
+                <div class="booking-tabs">
+                    <button class="tab-btn active" onclick="showTab('flights')">
+                        <i class="fas fa-plane"></i> Flights
+                    </button>
+                    <button class="tab-btn" onclick="showTab('trains')">
+                        <i class="fas fa-train"></i> Trains
+                    </button>
+                    <button class="tab-btn" onclick="showTab('hotels')">
+                        <i class="fas fa-bed"></i> Hotels
+                    </button>
+                    <button class="tab-btn" onclick="showTab('packages')">
+                        <i class="fas fa-suitcase"></i> Packages
+                    </button>
+                    
+                </div>
+
+                <div id="flights" class="booking-form active">
+                    <div class="trip-type">
+                        <input type="radio" id="oneway" name="trip" value="oneway" checked>
+                        <label for="oneway">One Way</label>
+                        <input type="radio" id="roundtrip" name="trip" value="roundtrip">
+                        <label for="roundtrip">Round Trip</label>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label>From</label>
+                            <input type="text" id="from" placeholder="Delhi (DEL)" value="Delhi (DEL)">
+                        </div>
+                        <div class="swap-btn">
+                            <button onclick="swapCities()"><i class="fas fa-exchange-alt"></i></button>
+                        </div>
+                        <div class="input-group">
+                            <label>To</label>
+                            <input type="text" id="to" placeholder="Mumbai (BOM)" value="Mumbai (BOM)">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label>Departure</label>
+                            <input type="date" id="departure">
+                        </div>
+                        <div class="input-group" id="return-date" style="display: none;">
+                            <label>Return</label>
+                            <input type="date" id="return">
+                        </div>
+                        <div class="input-group">
+                            <label>Passengers</label>
+                            <select id="passengers">
+                                <option value="1">1 Adult</option>
+                                <option value="2">2 Adults</option>
+                                <option value="3">3 Adults</option>
+                                <option value="4">4 Adults</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label>Class</label>
+                            <select id="class">
+                                <option value="economy">Economy</option>
+                                <option value="business">Business</option>
+                                <option value="first">First Class</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button class="search-btn" onclick="searchFlights()">
+                        <i class="fas fa-search"></i> Search Flights 
+                    </button>
+                </div>
+                <div id="trains" class="booking-form">
+                    <div class="trip-type">
+                        <input type="radio" id="train-oneway" name="train-trip" value="oneway" checked>
+                        <label for="train-oneway">One Way</label>
+                        <input type="radio" id="train-roundtrip" name="train-trip" value="roundtrip">
+                        <label for="train-roundtrip">Round Trip</label>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label>From Station</label>
+                            <input type="text" id="train-from" placeholder="NDLS (New Delhi)" value="NDLS">
+                        </div>
+                        <div class="swap-btn">
+                            <button onclick="swapTrainCities()"><i class="fas fa-exchange-alt"></i></button>
+                        </div>
+                        <div class="input-group">
+                            <label>To Station</label>
+                            <input type="text" id="train-to" placeholder="CSMT (Mumbai)" value="CSMT">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label>Departure Date</label>
+                            <input type="date" id="train-departure">
+                        </div>
+                        <div class="input-group">
+                            <label>Passengers</label>
+                            <select id="train-passengers">
+                                <option value="1">1 Passenger</option>
+                                <option value="2">2 Passengers</option>
+                                <option value="3">3 Passengers</option>
+                                <option value="4">4+ Passengers</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label>Class</label>
+                            <select id="train-class">
+                                <option value="sl">Sleeper (SL)</option>
+                                <option value="3a">AC 3 Tier (3A)</option>
+                                <option value="2a">AC 2 Tier (2A)</option>
+                                <option value="1a">AC First Class (1A)</option>
+                                <option value="cc">AC Chair Car (CC)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button class="search-btn" onclick="searchTrains()">
+                        <i class="fas fa-search"></i> Search Trains 
+                    </button>
+                </div>
+
+                <div id="hotels" class="booking-form">
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label>City/Hotel</label>
+                            <input type="text" id="hotel-city" placeholder="Enter city or hotel name" value="Goa">
+                        </div>
+                        <div class="input-group">
+                            <label>Check-in</label>
+                            <input type="date" id="hotel-checkin">
+                        </div>
+                        <div class="input-group">
+                            <label>Check-out</label>
+                            <input type="date" id="hotel-checkout">
+                        </div>
+                    </div>
+                    <button class="search-btn" onclick="searchHotels()">
+                        <i class="fas fa-search"></i> Search Hotels
+                    </button>
+                </div>
+
+                <div id="packages" class="booking-form">
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label>Destination</label>
+                            <input type="text" id="package-dest" placeholder="Where do you want to go?" value="Maldives">
+                        </div>
+                        <div class="input-group">
+                            <label>Departure Date</label>
+                            <input type="date" id="package-date">
+                        </div>
+                    </div>
+                    <button class="search-btn" onclick="searchPackages()">
+                        <i class="fas fa-search"></i> Search Packages
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal-overlay" id="login-modal">
+        <div class="modal-content" style="max-width: 400px;">
+            <span class="close-btn" onclick="closeLoginModal()">&times;</span>
+            <h2>Welcome Back</h2>
+            
+            <form id="loginForm" onsubmit="handleLoginSubmit(event)">
+                <div class="form-group">
+                    <label>Email Address:</label>
+                    <input type="email" id="login-email" placeholder="Enter your email" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Password:</label>
+                    <input type="password" id="login-password" placeholder="Enter your password" required>
+                </div>
+
+                <button type="submit" class="submit-btn" style="background-color: #3498db;">Sign In</button>
+                <p style="text-align: center; margin-top: 15px; font-size: 0.9rem;">
+                    Don't have an account? 
+                    <a href="javascript:void(0)" onclick="switchToSignup()" style="color: #3498db; text-decoration: none; font-weight:bold;">Sign up here</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="signup-modal">
+        <div class="modal-content" style="max-width: 400px;">
+            <span class="close-btn" onclick="closeSignupModal()">&times;</span>
+            <h2>Create Account</h2>
+            
+            <form id="signupForm" onsubmit="handleSignupSubmit(event)">
+                <div class="form-group">
+                    <label>Full Name:</label>
+                    <input type="text" id="signup-name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <label>Email Address:</label>
+                    <input type="email" id="signup-email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label>Password:</label>
+                    <input type="password" id="signup-password" placeholder="Create a password" required>
+                </div>
+                <button type="submit" class="submit-btn" style="background-color: #27ae60;">Register</button>
+                <p style="text-align: center; margin-top: 15px; font-size: 0.9rem;">
+                    Already have an account? 
+                    <a href="javascript:void(0)" onclick="switchToLogin()" style="color: #3498db; text-decoration: none; font-weight:bold;">Login here</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="group-modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2>Group Booking</h2>
+            
+            <form id="groupForm" onsubmit="handleFormSubmit(event)">
+                
+                <div class="form-group">
+                    <label>Number of People:</label>
+                    <input type="number" id="num-people" min="2" placeholder="e.g. 5" required oninput="checkLogic()">
+                </div>
+
+                <div class="form-group">
+                    <label>Boarding Points:</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="boarding" value="same" checked onchange="checkLogic()"> 
+                            Same for all
+                        </label>
+                        <label>
+                            <input type="radio" name="boarding" value="different" onchange="checkLogic()"> 
+                            Different
+                        </label>
+                    </div>
+                </div>
+
+                <div id="dynamic-boarding-fields">
+                    </div>
+
+                <button type="submit" class="submit-btn">Next Step &rarr;</button>
+            </form>
+        </div>
+    </div>
+    <section class="travel-tools" id="tools" style="padding: 60px 20px; background: #f4f7f6;">
+        <div class="container" style="max-width: 1200px; margin: 0 auto;">
+            <h2 style="text-align: center; color: #233356; margin-bottom: 40px; font-size: 2.5rem;">Your Travel Hub</h2>
+            
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <h3><i class="fas fa-wallet"></i> Smart Budget Tracker</h3>
+                    <p class="tool-desc">Monitor your trip expenses in real-time.</p>
+                    <div class="budget-app">
+                        <input type="number" id="budget-limit" placeholder="Set Total Budget (₹)" onchange="updateBudgetUI()">
+                        <div class="expense-inputs">
+                            <input type="text" id="expense-name" placeholder="Expense (e.g., Food)">
+                            <input type="number" id="expense-amount" placeholder="Amount (₹)">
+                            <button onclick="addExpense()" class="action-btn">Add</button>
+                        </div>
+                        <div class="budget-stats">
+                            <p>Total Spent: <strong>₹<span id="total-spent">0</span></strong></p>
+                            <div class="progress-bar"><div id="budget-progress"></div></div>
+                        </div>
+                        <ul id="expense-list"></ul>
+                    </div>
+                </div>
+
+                <div class="tool-card">
+                    <h3><i class="fas fa-book-open"></i> Storybook Memory Saver</h3>
+                    <p class="tool-desc">Upload your moody, cinematic travel shots to generate a downloadable video.</p>
+                    <div class="storybook-app">
+                        <input type="file" id="memory-upload" accept="image/*" multiple style="display: none;" onchange="previewMemories(event)">
+                        <label for="memory-upload" class="upload-btn"><i class="fas fa-cloud-upload-alt"></i> Upload Memories</label>
+                        <div id="memory-gallery" class="gallery-preview"></div>
+                        
+                        <input type="text" id="custom-video-text" placeholder="Enter video title (e.g., Memories of Banaras)" style="width: 100%; padding: 10px; margin-top: 15px; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box;">
+
+                        <button id="generate-story-btn" class="action-btn full-width" onclick="generateStorybook()" style="margin-top: 15px;">Create Storybook</button>
+                        
+                        <div id="storybook-output" style="display: none; margin-top: 20px; border-top: 2px dashed #ddd; padding-top: 20px;"></div>
+                    </div>
+                </div>
+
+                <div class="tool-card">
+                    <h3><i class="fas fa-clock"></i> Scheduled Updates</h3>
+                    <p class="tool-desc">Stay on track with automated itinerary and budget reminders.</p>
+                    <div class="updates-app">
+                        <div class="toggle-row">
+                            <span>Daily Trip Summary</span>
+                            <label class="switch"><input type="checkbox" checked><span class="slider round"></span></label>
+                        </div>
+                        <div class="toggle-row">
+                            <span>Budget Alerts (80% limit)</span>
+                            <label class="switch"><input type="checkbox" checked><span class="slider round"></span></label>
+                        </div>
+                        <div class="toggle-row">
+                            <span>Weekly Memory Prompts</span>
+                            <label class="switch"><input type="checkbox"><span class="slider round"></span></label>
+                        </div>
+                        <button class="action-btn full-width" onclick="alert('Preferences saved!')" style="margin-top: 20px;">Save Preferences</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="destinations" id="destinations">
+        <div class="container">
+            <h2>Popular Destinations</h2>
+            <div class="destination-grid">
+                
+                <a href="paris .html" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="destination-card" style="cursor: pointer; transition: all 0.3s ease; position: relative; background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.4)); backdrop-filter: blur(40px) saturate(180%); -webkit-backdrop-filter: blur(40px) saturate(180%); border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 24px; overflow: hidden; box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.4);">
+                        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 30%, transparent 70%); pointer-events: none; border-radius: 24px;"></div>
+                        <img src="../images/paris.jpg.jpeg" alt="Paris" style="width: 100%; display: block; position: relative; z-index: 1;">
+                        <div class="card-content" style="position: relative; z-index: 1;">
+                            <h3>Paris</h3>
+                            <p>Starting from ₹45,000</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="landon .html" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="destination-card" style="cursor: pointer; transition: all 0.3s ease; position: relative; background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.4)); backdrop-filter: blur(40px) saturate(180%); -webkit-backdrop-filter: blur(40px) saturate(180%); border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 24px; overflow: hidden; box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.4);">
+                        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 30%, transparent 70%); pointer-events: none; border-radius: 24px;"></div>
+                        <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=300" alt="London" style="width: 100%; display: block; position: relative; z-index: 1;">
+                        <div class="card-content" style="position: relative; z-index: 1;">
+                            <h3>London</h3>
+                            <p>Starting from ₹55,000</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="tokyo .html" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="destination-card" style="cursor: pointer; transition: all 0.3s ease; position: relative; background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.4)); backdrop-filter: blur(40px) saturate(180%); -webkit-backdrop-filter: blur(40px) saturate(180%); border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 24px; overflow: hidden; box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.4);">
+                        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 30%, transparent 70%); pointer-events: none; border-radius: 24px;"></div>
+                        <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=300" alt="Tokyo" style="width: 100%; display: block; position: relative; z-index: 1;">
+                        <div class="card-content" style="position: relative; z-index: 1;">
+                            <h3>Tokyo</h3>
+                            <p>Starting from ₹40,000</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="bali.html" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="destination-card" style="cursor: pointer; transition: all 0.3s ease; position: relative; background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.4)); backdrop-filter: blur(40px) saturate(180%); -webkit-backdrop-filter: blur(40px) saturate(180%); border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 24px; overflow: hidden; box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.4);">
+                        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 30%, transparent 70%); pointer-events: none; border-radius: 24px;"></div>
+                        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=300" alt="Bali" style="width: 100%; display: block; position: relative; z-index: 1;">
+                        <div class="card-content" style="position: relative; z-index: 1;">
+                            <h3>Bali</h3>
+                            <p>Starting from ₹35,000</p>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <div id="travel-chat-widget">
+        <button id="chat-toggle-btn" onclick="toggleChatWidget()">
+            <i class="fas fa-robot"></i>
+            <span class="notification-dot"></span>
+        </button>
+
+        <div class="chat-window" id="chat-window">
+            <div class="chat-header">
+                <div class="header-info">
+                    <img src="../images/Logo.gif" alt="Towards Point AI Logo" style="height: 35px; width: auto; margin-right: 8px;">
+                    <div>
+                        <h4>Towards Point AI</h4>
+                        <span class="status">Online</span>
+                    </div>
+                </div>
+                <button class="close-btn" onclick="toggleChatWidget()">&times;</button>
+            </div>
+
+            <div class="chat-messages" id="widget-messages">
+                <div class="message bot-message">
+                    Hello! 🌍 I'm your AI Travel Assistant. Ask me about flights, hotels, or destination ideas!
+                </div>
+            </div>
+
+            <div class="chat-input-area">
+                <input type="text" id="widget-input" placeholder="Type a message..." onkeypress="handleWidgetEnter(event)">
+                <button onclick="sendWidgetMessage()">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+            <div class="powered-by">Powered by Gemini AI</div>
+        </div>
+    </div>
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-col branding">
+                <h3><i class="fas fa-compass"></i> Towards Point</h3>
+                <p>Your ultimate travel partner. Find the best deals on flights, trains, hotels, and holiday packages. Explore the world with us securely and effortlessly.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="   https://www.instagram.com/p/DRHxhT8DLI0/?igsh=aXZnczB1YWs3dnZk"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#flights">Book Flights</a></li>
+                    <li><a href="index.html#trains">Book Trains</a></li>
+                    <li><a href="index.html#hotels">Find Hotels</a></li>
+                    <li><a href="index.html#packages">Holiday Packages</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col contact">
+                <h4>Contact Us</h4>
+                <p><i class="fas fa-map-marker-alt"></i> Towards Point HQ, Bhayandar</p>
+                <p><i class="fas fa-phone-alt"></i> +91 98765 43210</p>
+                <p><i class="fas fa-envelope"></i> support@towardspoint.com</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Towards Point. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+        </div>
+    </footer>
+<script>
+    // --- MASTER SECURITY GUARD ---
+    window.isUserLoggedIn = false; // Firebase will control this
+
+    function requireLogin(featureName) {
+        if (!window.isUserLoggedIn) {
+            alert(`⛔ Access Denied! Please login to use ${featureName}.`);
+            showLogin(); // Instantly pops open the login box
+            return false;
+        }
+        return true;
+    }
+
+    // 🔒 AUTO-LOCK ALL DESTINATION LINKS
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('.destination-grid a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                if (!requireLogin('Popular Destinations')) {
+                    e.preventDefault(); // Stops the link from opening the new page
+                }
+            });
+        });
+    });
+    
+    // --- 0. AUTHENTICATION LOGIC (LOGIN / SIGNUP) ---
+    
+    // --- 0. AUTHENTICATION LOGIC (LOGIN / SIGNUP) ---
+    function showLogin() { document.getElementById('login-modal').style.display = 'flex'; }
+    function closeLoginModal() { document.getElementById('login-modal').style.display = 'none'; }
+    function showSignup() { document.getElementById('signup-modal').style.display = 'flex'; }
+    function closeSignupModal() { document.getElementById('signup-modal').style.display = 'none'; }
+
+    function switchToSignup() { closeLoginModal(); showSignup(); }
+    function switchToLogin() { closeSignupModal(); showLogin(); }
+
+    // Close modal if clicking outside
+    window.onclick = function(event) {
+        const modal = document.getElementById('group-modal');
+        const loginModal = document.getElementById('login-modal');
+        const signupModal = document.getElementById('signup-modal');
+        if (event.target == modal) {
+            closeModal();
+        }
+        if (event.target == loginModal) {
+            closeLoginModal();
+        }
+        if (event.target == signupModal) {
+            closeSignupModal();
+        }
+    }
+
+
+    // --- 1. NEW LOGIC FOR SINGLE/GROUP TOGGLE ---
+    
+    function selectType(type) {
+        if (type === 'group' && !requireLogin('Group Bookings')) return; // 🔒 ADDED LOCK
+        
+        // Toggle visual active state
+        document.getElementById('btn-single').classList.remove('active');
+        
+        if (type === 'single') {
+            document.getElementById('btn-single').classList.add('active');
+        } else {
+            document.getElementById('btn-group').classList.add('active');
+            // Redirect to group booking page
+            window.location.href = 'group-travel-coordination.html';
+        }
+    }
+
+    function openModal() { document.getElementById('group-modal').style.display = 'flex'; }
+    
+    function closeModal() { 
+        document.getElementById('group-modal').style.display = 'none'; 
+        // Reset to Single since group was cancelled
+        selectType('single'); 
+    }
+
+    // Dynamic Fields Logic
+    function checkLogic() {
+        const numPeople = document.getElementById('num-people').value;
+        const boardingType = document.querySelector('input[name="boarding"]:checked').value;
+        const container = document.getElementById('dynamic-boarding-fields');
+        
+        container.innerHTML = ''; 
+        
+        if (boardingType === 'different' && numPeople > 0) {
+            container.style.display = 'block';
+            
+            const title = document.createElement('p');
+            title.innerText = `Enter Details for ${numPeople} Travelers:`;
+            title.style.fontWeight = 'bold';
+            title.style.color = '#333';
+            container.appendChild(title);
+
+            for (let i = 1; i <= numPeople; i++) {
+                const card = document.createElement('div');
+                card.className = 'traveler-card';
+                card.innerHTML = `
+                    <h4>Traveler ${i}</h4>
+                    <div class="traveler-row">
+                        <input type="text" name="name_${i}" placeholder="Full Name" required>
+                        <input type="tel" name="phone_${i}" placeholder="Phone No." required>
+                    </div>
+                    <input type="text" name="location_${i}" placeholder="Boarding Location (City/Area)" required style="width:100%">
+                `;
+                container.appendChild(card);
+            }
+        } else {
+            container.style.display = 'none';
+        }
+    }
+
+    // Submit Logic - Redirects to next-page.html
+    function handleFormSubmit(event) {
+        event.preventDefault();
+
+        const numPeople = document.getElementById('num-people').value;
+        const boardingType = document.querySelector('input[name="boarding"]:checked').value;
+        let travelers = [];
+
+        if (boardingType === 'different') {
+            for (let i = 1; i <= numPeople; i++) {
+                const nameInput = document.querySelector(`input[name="name_${i}"]`);
+                const phoneInput = document.querySelector(`input[name="phone_${i}"]`);
+                const locationInput = document.querySelector(`input[name="location_${i}"]`);
+
+                if(nameInput && phoneInput && locationInput) {
+                    travelers.push({
+                        name: nameInput.value,
+                        phone: phoneInput.value,
+                        location: locationInput.value
+                    });
+                }
+            }
+        } else {
+            for (let i = 1; i <= numPeople; i++) {
+                travelers.push({
+                    name: `Guest ${i}`,
+                    phone: "---",
+                    location: "Central Point (Same)"
+                });
+            }
+        }
+
+        const bookingData = {
+            count: numPeople,
+            type: boardingType,
+            travelers: travelers
+        };
+        
+        localStorage.setItem('travelHavenBooking', JSON.stringify(bookingData));
+        window.location.href = 'next-page.html'; 
+    }
+
+
+    // --- 2. EXISTING API & PAGE LOGIC ---
+    const API_KEY = "AIzaSyAQ-ZrHniFp_pUesFXB0uJ49UCDz-rsB38"; 
+    
+    // TAB LOGIC
+    function showTab(tabName) {
+        const forms = document.querySelectorAll('.booking-form');
+        forms.forEach(form => {
+            form.style.display = 'none';
+            form.classList.remove('active');
+        });
+        const buttons = document.querySelectorAll('.tab-btn');
+        buttons.forEach(btn => btn.classList.remove('active'));
+
+        const selectedForm = document.getElementById(tabName);
+        if (selectedForm) {
+            selectedForm.style.display = 'block';
+            selectedForm.classList.add('active');
+        }
+        if (event && event.currentTarget) {
+            event.currentTarget.classList.add('active');
+        }
+    }
+
+    // CITY SWAP LOGIC
+    function swapCities() {
+        const fromInput = document.getElementById('from');
+        const toInput = document.getElementById('to');
+        const temp = fromInput.value;
+        fromInput.value = toInput.value;
+        toInput.value = temp;
+    }
+
+    // FLIGHT SEARCH
+    // FLIGHT SEARCH
+    function searchFlights() {
+        if (!requireLogin('Flight Search')) return; // 🔒 ADDED LOCK
+        
+        const fromVal = document.getElementById('from').value;
+        const toVal = document.getElementById('to').value;
+        const dateVal = document.getElementById('departure').value || new Date().toISOString().split('T')[0];
+
+        if (!fromVal || !toVal) {
+            alert("Please enter both 'From' and 'To' locations.");
+            return;
+        }
+
+        const params = new URLSearchParams({
+            from: fromVal,
+            to: toVal,
+            date: dateVal
+        });
+        window.location.href = `booking.html?${params.toString()}`;
+    }
+    
+    // TRAIN SWAP LOGIC
+    function swapTrainCities() {
+        const fromInput = document.getElementById('train-from');
+        const toInput = document.getElementById('train-to');
+        const temp = fromInput.value;
+        fromInput.value = toInput.value;
+        toInput.value = temp;
+    }
+
+    // // TRAIN SEARCH
+    // TRAIN SEARCH
+    function searchTrains() {
+        if (!requireLogin('Train Search')) return; // 🔒 ADDED LOCK
+        
+        const fromVal = document.getElementById('train-from').value;
+        const toVal = document.getElementById('train-to').value;
+        const dateVal = document.getElementById('train-departure').value || new Date().toISOString().split('T')[0];
+
+        if (!fromVal || !toVal) {
+            alert("Please enter both 'From' and 'To' stations.");
+            return;
+        }
+
+        const params = new URLSearchParams({
+            from: fromVal,
+            to: toVal,
+            date: dateVal,
+            type: 'train'
+        });
+        window.location.href = `train booking.html?${params.toString()}`;
+    }
+    
+    // HOTEL SEARCH
+ // HOTEL SEARCH
+    function searchHotels() {
+        if (!requireLogin('Hotel Search')) return; // 🔒 ADDED LOCK
+        
+        const city = document.getElementById('hotel-city').value;
+        const checkin = document.getElementById('hotel-checkin').value || new Date().toISOString().split('T')[0];
+        
+        let nextDay = new Date();
+        nextDay.setDate(nextDay.getDate() + 2);
+        const checkout = document.getElementById('hotel-checkout').value || nextDay.toISOString().split('T')[0];
+
+        if (!city) { alert("Please enter a city or hotel name."); return; }
+
+        const params = new URLSearchParams({ city: city, checkin: checkin, checkout: checkout });
+        window.location.href = `hotels.html?${params.toString()}`;
+    }
+
+    // PACKAGE SEARCH
+   // PACKAGE SEARCH
+    function searchPackages() {
+        if (!requireLogin('Holiday Packages')) return; // 🔒 ADDED LOCK
+        
+        const dest = document.getElementById('package-dest').value;
+        const date = document.getElementById('package-date').value || new Date().toISOString().split('T')[0];
+
+        if (!dest) { alert("Please enter a destination."); return; }
+
+        const params = new URLSearchParams({ dest: dest, date: date });
+        window.location.href = `packages.html?${params.toString()}`;
+    }
+
+    // CHATBOT LOGIC
+    const widget = document.getElementById('chat-window');
+    const messagesArea = document.getElementById('widget-messages');
+    const inputField = document.getElementById('widget-input');
+
+    function toggleChatWidget() {
+        if (!requireLogin('Towards Point AI')) return; // 🔒 ADDED LOCK
+        
+        if (widget.style.display === 'flex') {
+            widget.style.display = 'none';
+        } else {
+            widget.style.display = 'flex';
+            setTimeout(() => inputField.focus(), 100);
+        }
+    }
+    window.addEventListener('load', () => {
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('open_ai') === '1') {
+            setTimeout(() => {
+                const aiSection = document.getElementById('travel-chat-widget');
+                if (aiSection) aiSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                if (widget.style.display !== 'flex') {
+                    toggleChatWidget();
+                }
+            }, 250);
+        }
+    });
+
+    function handleWidgetEnter(event) {
+        if (event.key === 'Enter') sendWidgetMessage();
+    }
+
+    async function sendWidgetMessage() {
+        const text = inputField.value.trim();
+        if (!text) return;
+        addWidgetMessage(text, 'user');
+        inputField.value = '';
+        const loadingId = showLoading();
+        let responseText = "";
+        
+        try {
+            if (API_KEY && API_KEY.length > 10) {
+                responseText = await callGeminiAI(text);
+            } else {
+                await new Promise(r => setTimeout(r, 1000));
+                responseText = "I am in offline mode. Please add a valid API Key.";
+            }
+        } catch (error) {
+            console.error(error);
+            responseText = "⚠️ Connection Failed.";
+        }
+        removeLoading(loadingId);
+        addWidgetMessage(responseText, 'bot');
+    }
+
+    function addWidgetMessage(text, sender) {
+        const div = document.createElement('div');
+        div.className = `message ${sender}-message`;
+        div.innerHTML = text.replace(/\n/g, '<br>'); 
+        messagesArea.appendChild(div);
+        messagesArea.scrollTop = messagesArea.scrollHeight;
+    }
+
+    function showLoading() {
+        const id = 'loading-' + Date.now();
+        const div = document.createElement('div');
+        div.className = 'message bot-message';
+        div.id = id;
+        div.innerHTML = '<i class="fas fa-ellipsis-h fa-fade"></i>';
+        messagesArea.appendChild(div);
+        messagesArea.scrollTop = messagesArea.scrollHeight;
+        return id;
+    }
+
+    function removeLoading(id) {
+        const el = document.getElementById(id);
+        if (el) el.remove();
+    }
+
+    async function callGeminiAI(userText) {
+        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${API_KEY}`;
+        const payload = {
+            contents: [{ parts: [{ text: "You are Towards Point AI. Answer in <50 words. User: " + userText }] }]
+        };
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        });
+        
+        const data = await response.json();
+        
+        // This is the missing piece! It stops the crash and tells you the real error.
+        if (!response.ok) {
+            console.error("GEMINI API ERROR:", data);
+            throw new Error(data.error?.message || "Invalid API Key. Please check Google AI Studio.");
+        }
+        
+        return data.candidates[0].content.parts[0].text;
+    }
+    // --- TRAVEL HUB LOGIC ---
+
+   // --- TRAVEL HUB LOGIC ---
+
+    // 1. Budget Tracker
+    // 1. Upgraded Smart Budget Tracker (Saves Data!)
+    // let totalSpent = localStorage.getItem('totalSpent') ? parseFloat(localStorage.getItem('totalSpent')) : 0;
+    
+    // // Load saved data when the page opens
+    // window.addEventListener('DOMContentLoaded', (event) => {
+    //     document.getElementById('total-spent').innerText = totalSpent;
+    //     if(localStorage.getItem('expenseHtml')) {
+    //         document.getElementById('expense-list').innerHTML = localStorage.getItem('expenseHtml');
+    //     }
+    //     if(localStorage.getItem('budgetLimit')) {
+    //         document.getElementById('budget-limit').value = localStorage.getItem('budgetLimit');
+    //         updateBudgetUI();
+    //     }
+    // });
+
+    // function addExpense() {
+    //     const nameInput = document.getElementById('expense-name');
+    //     const amountInput = document.getElementById('expense-amount');
+    //     const amount = parseFloat(amountInput.value);
+
+    //     if (nameInput.value && amount > 0) {
+    //         totalSpent += amount;
+            
+    //         // Create the new list item
+    //         const li = document.createElement('li');
+    //         li.innerHTML = `<span>${nameInput.value}</span> <span>₹${amount}</span>`;
+            
+    //         // Add it to the top of the list
+    //         const list = document.getElementById('expense-list');
+    //         list.prepend(li);
+            
+    //         document.getElementById('total-spent').innerText = totalSpent;
+            
+    //         // SAVE EVERYTHING TO MEMORY!
+    //         localStorage.setItem('totalSpent', totalSpent);
+    //         localStorage.setItem('expenseHtml', list.innerHTML);
+            
+    //         updateBudgetUI();
+            
+    //         // Clear the inputs
+    //         nameInput.value = '';
+    //         amountInput.value = '';
+    //     }
+    // }
+
+    // function updateBudgetUI() {
+    //     const limitInput = document.getElementById('budget-limit').value;
+    //     const budgetLimit = parseFloat(limitInput) || 0;
+        
+    //     // Save the limit to memory
+    //     localStorage.setItem('budgetLimit', limitInput); 
+
+    //     const progressBar = document.getElementById('budget-progress');
+        
+    //     if (budgetLimit > 0) {
+    //         let percentage = (totalSpent / budgetLimit) * 100;
+    //         if (percentage > 100) percentage = 100;
+            
+    //         progressBar.style.width = percentage + '%';
+            
+    //         // Turn red if you spend 80% or more!
+    //         if (percentage >= 80) {
+    //             progressBar.style.background = '#e74c3c';
+    //         } else {
+    //             progressBar.style.background = '#27ae60';
+    //         }
+    //     }
+    // }
+    //         updateBudgetUI();
+            
+            
+        
+
+
+    // function updateBudgetUI() {
+    //     const budgetLimit = parseFloat(document.getElementById('budget-limit').value) || 0;
+    //     const progressBar = document.getElementById('budget-progress');
+        
+    //     if (budgetLimit > 0) {
+    //         let percentage = (totalSpent / budgetLimit) * 100;
+    //         if (percentage > 100) percentage = 100;
+            
+    //         progressBar.style.width = percentage + '%';
+            
+    //         if (percentage >= 80) {
+    //             progressBar.style.background = '#e74c3c';
+    //         } else {
+    //             progressBar.style.background = '#27ae60';
+    //         }
+    //     }
+    // }
+    // 1. User-Specific Smart Budget Tracker
+    let totalSpent = 0;
+    let currentBudgetUserId = null;
+
+    // This function runs when Firebase confirms who is logged in
+    window.loadUserBudget = function(userId) {
+        currentBudgetUserId = userId;
+        // Load THIS specific user's data
+        totalSpent = localStorage.getItem('totalSpent_' + userId) ? parseFloat(localStorage.getItem('totalSpent_' + userId)) : 0;
+        
+        document.getElementById('total-spent').innerText = totalSpent;
+        document.getElementById('expense-list').innerHTML = localStorage.getItem('expenseHtml_' + userId) || '';
+        document.getElementById('budget-limit').value = localStorage.getItem('budgetLimit_' + userId) || '';
+        
+        updateBudgetUI();
+    };
+
+    // This function clears the screen when someone logs out
+    window.clearBudgetUI = function() {
+        currentBudgetUserId = null;
+        totalSpent = 0;
+        document.getElementById('total-spent').innerText = '0';
+        document.getElementById('expense-list').innerHTML = '';
+        document.getElementById('budget-limit').value = '';
+        document.getElementById('budget-progress').style.width = '0%';
+    };
+
+  function addExpense() {
+        if (!requireLogin('Budget Tracker')) return; // 🔒 ADDED NEW MASTER LOCK
+
+        const nameInput = document.getElementById('expense-name');
+        const amountInput = document.getElementById('expense-amount');
+        const amount = parseFloat(amountInput.value);
+
+        if (nameInput.value && amount > 0) {
+            totalSpent += amount;
+            
+            const li = document.createElement('li');
+            li.innerHTML = `<span>${nameInput.value}</span> <span>₹${amount}</span>`;
+            
+            const list = document.getElementById('expense-list');
+            list.prepend(li); // Adds to top of list
+            
+            document.getElementById('total-spent').innerText = totalSpent;
+            
+            // SAVE TO THIS SPECIFIC USER'S MEMORY
+            localStorage.setItem('totalSpent_' + currentBudgetUserId, totalSpent);
+            localStorage.setItem('expenseHtml_' + currentBudgetUserId, list.innerHTML);
+            
+            updateBudgetUI();
+            
+            nameInput.value = '';
+            amountInput.value = '';
+        }
+    }
+
+    function updateBudgetUI() {
+        const limitInput = document.getElementById('budget-limit').value;
+        const budgetLimit = parseFloat(limitInput) || 0;
+        
+        if (currentBudgetUserId) {
+            localStorage.setItem('budgetLimit_' + currentBudgetUserId, limitInput); 
+        }
+
+        const progressBar = document.getElementById('budget-progress');
+        
+        if (budgetLimit > 0) {
+            let percentage = (totalSpent / budgetLimit) * 100;
+            if (percentage > 100) percentage = 100;
+            
+            progressBar.style.width = percentage + '%';
+            progressBar.style.background = percentage >= 80 ? '#e74c3c' : '#27ae60';
+        } else {
+            progressBar.style.width = '0%';
+        }
+    }
+
+    // 2. Storybook Image Preview
+    // 2. Storybook Image Preview
+    function previewMemories(event) {
+        if (!requireLogin('Storybook Memory Saver')) { event.target.value = ''; return; } // 🔒 ADDED LOCK
+        
+        const gallery = document.getElementById('memory-gallery');
+        gallery.innerHTML = ''; 
+        const files = event.target.files;
+
+        for (let i = 0; i < files.length; i++) {
+            const file = files[i];
+            const reader = new FileReader();
+            
+            reader.onload = function(e) {
+                const img = document.createElement('img');
+                img.src = e.target.result;
+                gallery.appendChild(img);
+            }
+            reader.readAsDataURL(file);
+        }
+    }
+
+    // 3. Cinematic Video Generation & Download Logic
+    function generateStorybook() {
+        const gallery = document.getElementById('memory-gallery');
+        const images = gallery.getElementsByTagName('img');
+        const btn = document.getElementById('generate-story-btn');
+        const output = document.getElementById('storybook-output');
+        
+        // Grab the custom text from the user
+        const customTextInput = document.getElementById('custom-video-text').value.trim();
+
+        if (images.length === 0) {
+            alert("Please upload some photos first to create the video!");
+            return;
+        }
+
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Rendering Video (Please Wait)...';
+        btn.disabled = true;
+        btn.style.opacity = '0.7';
+
+        const canvas = document.createElement('canvas');
+        canvas.width = 1280; 
+        canvas.height = 720;
+        const ctx = canvas.getContext('2d');
+
+        const fallbackText = [
+            "Lost in the moment...",
+            "Beautiful Destinations",
+            "Chasing the light",
+            "Unforgettable Memories"
+        ];
+
+        const stream = canvas.captureStream(30); 
+        const recorder = new MediaRecorder(stream, { mimeType: 'video/webm' });
+        const chunks = [];
+
+        recorder.ondataavailable = function(e) {
+            chunks.push(e.data);
+        };
+
+        recorder.onstop = function() {
+            const blob = new Blob(chunks, { type: 'video/webm' });
+            const videoURL = URL.createObjectURL(blob);
+
+            output.innerHTML = `
+                <h4 style="text-align:center; color:#2c3e50; margin-bottom:15px;">
+                    <i class="fas fa-check-circle"></i> Video Generation Complete!
+                </h4>
+                <a href="${videoURL}" download="Travel_Heaven_Memories.webm" class="action-btn full-width" style="display:block; text-align:center; text-decoration:none; background:#27ae60; padding: 12px; font-size: 16px;">
+                    <i class="fas fa-download"></i> Download Video
+                </a>
+            `;
+            output.style.display = 'block';
+
+            btn.innerHTML = 'Create Storybook';
+            btn.disabled = false;
+            btn.style.opacity = '1';
+        };
+
+        recorder.start();
+
+        let currentImgIdx = 0;
+        let scale = 1.0;
+        const durationPerImage = 3000; 
+        const frameRate = 1000 / 30; 
+        const framesPerImage = durationPerImage / frameRate;
+        let frameCount = 0;
+
+        function drawFrame() {
+            if (currentImgIdx >= images.length) {
+                recorder.stop();
+                return;
+            }
+
+            const img = images[currentImgIdx];
+            const textToDisplay = customTextInput !== "" ? customTextInput : fallbackText[currentImgIdx % fallbackText.length];
+
+            ctx.fillStyle = '#000';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            scale = 1.0 + (0.15 * (frameCount / framesPerImage));
+
+            ctx.save();
+            ctx.translate(canvas.width / 2, canvas.height / 2);
+            ctx.scale(scale, scale);
+            
+            const imgRatio = img.naturalWidth / img.naturalHeight;
+            const canvasRatio = canvas.width / canvas.height;
+            let drawW, drawH;
+            
+            if (imgRatio > canvasRatio) {
+                drawH = canvas.height;
+                drawW = img.naturalWidth * (canvas.height / img.naturalHeight);
+            } else {
+                drawW = canvas.width;
+                drawH = img.naturalHeight * (canvas.width / img.naturalWidth);
+            }
+            
+            ctx.drawImage(img, -drawW / 2, -drawH / 2, drawW, drawH);
+            ctx.restore();
+
+            const gradient = ctx.createLinearGradient(0, canvas.height - 150, 0, canvas.height);
+            gradient.addColorStop(0, 'rgba(0,0,0,0)');
+            gradient.addColorStop(1, 'rgba(0,0,0,0.8)');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, canvas.height - 150, canvas.width, 150);
+
+            ctx.font = 'italic bold 45px Georgia';
+            ctx.fillStyle = '#ffffff';
+            ctx.textAlign = 'center';
+            ctx.shadowColor = "rgba(0,0,0,0.5)";
+            ctx.shadowBlur = 10;
+            ctx.fillText(textToDisplay, canvas.width / 2, canvas.height - 50);
+
+            frameCount++;
+            if (frameCount >= framesPerImage) {
+                frameCount = 0;
+                currentImgIdx++;
+            }
+
+            setTimeout(drawFrame, frameRate);
+        }
+
+        drawFrame();
+    }
+    // ==========================================
+        // 🖥️ LOADING SCREEN LOGIC (PRELOADER)
+        // ==========================================
+        window.addEventListener("load", function() {
+            const preloader = document.getElementById("preloader");
+            
+            // Gives the user 1 second to see the cool GIF before it fades out
+            setTimeout(() => {
+                preloader.style.opacity = "0";
+                setTimeout(() => {
+                    preloader.style.display = "none";
+                }, 500); // Waits for the fade transition to finish
+            }, 1000); 
+        });
+</script>
+<script type="module">
+        import {
+            addDoc,
+            auth,
+            collection,
+            createUserWithEmailAndPassword,
+            db,
+            onAuthStateChanged,
+            signInWithEmailAndPassword,
+            signOut
+        } from "../js/firebase-config.js";
+        onAuthStateChanged(auth, (user) => {
+            const authContainer = document.getElementById('auth-container');
+            
+            if (user) {
+                window.isUserLoggedIn = true; // 🔓 UNLOCKS THE WEBSITE
+
+                // The user logged in! Show the badge AND the logout button instantly.
+                const name = user.email.split('@')[0];
+                const displayName = name.charAt(0).toUpperCase() + name.slice(1);
+                
+                authContainer.innerHTML = `
+                    <div class="user-profile-badge">
+                        <a href="dashboard.html">
+                            <i class="fas fa-user-circle" style="font-size: 1.5rem; color: #3498db;"></i>
+                            <span>Hi, ${displayName}</span>
+                        </a>
+                        <button class="logout-btn" onclick="window.signUserOut()">Logout</button>
+                    </div>`;
+                
+                // Load the specific budget for the person who just logged in
+                if (window.loadUserBudget) window.loadUserBudget(user.email);
+            } else {
+                window.isUserLoggedIn = false; // 🔒 LOCKS THE WEBSITE
+
+                // Nobody is logged in! Instantly show the Login/Signup buttons
+                authContainer.innerHTML = `
+                    <button onclick="showSignup()">Sign Up</button>
+                    <button onclick="showLogin()">Login</button>
+                `;
+                
+                // Clear the budget tracker so it's blank
+                if (window.clearBudgetUI) window.clearBudgetUI();
+            }
+        });
+
+        window.signUserOut = function() {
+            signOut(auth).then(() => {
+                // We no longer need window.location.reload() because Firebase updates the UI instantly!
+                alert("You have been successfully logged out.");
+            }).catch((error) => {
+                console.error("Logout Error:", error);
+            });
+        };
+        window.handleSignupSubmit = function(event) {
+            event.preventDefault();
+            const email = document.getElementById('signup-email').value;
+            const password = document.getElementById('signup-password').value;
+
+            // Send to Firebase Authentication
+            createUserWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    closeSignupModal();
+                    alert("✅ Account Created Successfully in Live Database!");
+                    // The UI will now update automatically!
+                })
+                .catch((error) => {
+                    alert("Signup Error: " + error.message);
+                });
+        };
+
+        window.handleLoginSubmit = function(event) {
+            event.preventDefault();
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+
+            // Verify with Firebase Authentication
+            signInWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    closeLoginModal();
+                    alert("✅ Live Database Login Successful!");
+                    // The UI will now update automatically!
+                })
+                .catch((error) => {
+                    alert("Login Failed: " + error.message);
+                });
+        };
+        window.handleFormSubmit = async function(event) {
+            event.preventDefault();
+            const numPeople = document.getElementById('num-people').value;
+            const boardingType = document.querySelector('input[name="boarding"]:checked').value;
+            let travelers = [];
+
+            if (boardingType === 'different') {
+                for (let i = 1; i <= numPeople; i++) {
+                    travelers.push({
+                        name: document.querySelector(`input[name="name_${i}"]`).value,
+                        phone: document.querySelector(`input[name="phone_${i}"]`).value,
+                        location: document.querySelector(`input[name="location_${i}"]`).value
+                    });
+                }
+            } else {
+                for (let i = 1; i <= numPeople; i++) {
+                    travelers.push({ name: `Guest ${i}`, phone: "---", location: "Central Point (Same)" });
+                }
+            }
+
+            try {
+                // Save this booking to your Firebase Firestore!
+                const docRef = await addDoc(collection(db, "groupBookings"), {
+                    count: numPeople,
+                    type: boardingType,
+                    travelers: travelers,
+                    bookingDate: new Date().toISOString()
+                });
+                
+                alert("✅ Booking securely saved to cloud database! \nBooking ID: " + docRef.id);
+                window.location.href = 'next-page.html'; 
+            } catch (e) {
+                console.error("Error adding document: ", e);
+                alert("Database Error: Could not save booking.");
+            }
+        };
+    </script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
